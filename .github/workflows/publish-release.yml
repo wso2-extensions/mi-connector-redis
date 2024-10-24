@@ -1,0 +1,26 @@
+name: Publish Release
+
+on:
+  workflow_dispatch:
+
+jobs:
+  Ubuntu:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK 11
+        uses: joschi/setup-jdk@v2
+        with:
+          distribution: 'adopt'
+          java-version: 11
+      - name: Get version from pom.xml
+        id: get_version
+        run: |
+          version=$(xmllint --xpath "string(//project/version)" pom.xml)
+          echo "RELEASE_VERSION=${version%-SNAPSHOT}" >> $GITHUB_ENV
+          echo "Version: ${VERSION}"
+      - name: Build with Maven
+        run: |
+          mvn -B clean install -DskipTests
