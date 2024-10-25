@@ -393,8 +393,8 @@
 <!--        </snapshotRepository>-->
         <repository>
             <id>nexus</id>
-            <name>Releases</name>
-            <url>https://1619-203-94-95-4.ngrok-free.app/repository/maven-releases/</url>
+            <name>maven-releases</name>
+            <url>https://1619-203-94-95-4.ngrok-free.app/repository/maven-releases</url>
         </repository>
     </distributionManagement>
 </project>
