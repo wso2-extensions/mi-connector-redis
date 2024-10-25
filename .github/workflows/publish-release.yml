@@ -16,11 +16,31 @@ jobs:
           distribution: 'adopt'
           java-version: 11
       - name: Get version from pom.xml
-        id: get_version
         run: |
-          version=$(xmllint --xpath "string(//project/version)" pom.xml)
+          version=$(grep -m 1 '<version>' pom.xml | sed 's/.*<version>\(.*\)<\/version>.*/\1/')
           echo "RELEASE_VERSION=${version%-SNAPSHOT}" >> $GITHUB_ENV
-          echo "Version: ${VERSION}"
+          echo "Version 1: ${RELEASE_VERSION}"
+      - name: Pre release connector version update
+        run: |
+          echo "Version 2: ${RELEASE_VERSION}"
+          git checkout -b release-${RELEASE_VERSION}
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          sed -i "s/<version>.*-SNAPSHOT<\/version>/<version>$RELEASE_VERSION<\/version>/" pom.xml
+          git add pom.xml
+          git commit -m "Move connector to stable version" || echo "No changes to commit"
+      - name: Configure Maven settings file
+        run: |
+          mkdir -p ~/.m2
+          echo "<settings>
+                  <servers>
+                    <server>
+                      <id>nexus</id>
+                      <username>${{ secrets.NEXUS_USERNAME }}</username>
+                      <password>${{ secrets.NEXUS_PASSWORD }}</password>
+                    </server>
+                  </servers>
+                </settings>" > ~/.m2/settings.xml
       - name: Build with Maven
         run: |
           mvn -B clean install -DskipTests
