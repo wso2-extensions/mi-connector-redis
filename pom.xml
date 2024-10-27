@@ -213,10 +213,6 @@
                 <artifactId>maven-release-plugin</artifactId>
                 <configuration>
                     <tagNameFormat>@{project.version}</tagNameFormat>
-<!--                    <autoResolveSnapshots>true</autoResolveSnapshots>-->
-<!--                    <autoVersionSubmodules>true</autoVersionSubmodules>-->
-<!--                    <allowReleasePluginSnapshot>true</allowReleasePluginSnapshot>-->
-<!--                    <allowTimestampedSnapshots>true</allowTimestampedSnapshots>-->
                 </configuration>
             </plugin>
             <plugin>

@@ -27,7 +27,7 @@ jobs:
                     </server>
                   </servers>
                 </settings>" > ~/.m2/settings.xml
-      - name: Pre release connector version update
+      - name: Configure git credentials
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
