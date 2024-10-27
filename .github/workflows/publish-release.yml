@@ -27,6 +27,10 @@ jobs:
                     </server>
                   </servers>
                 </settings>" > ~/.m2/settings.xml
+      - name: Pre release connector version update
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
       - name: Deploy artifacts with Maven
         run: |
           mvn --batch-mode release:prepare release:perform
