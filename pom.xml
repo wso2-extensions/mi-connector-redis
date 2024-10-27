@@ -17,13 +17,12 @@
    under the License.
 -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.wso2.carbon.connector</groupId>
     <artifactId>org.wso2.carbon.connector.redis</artifactId>
     <packaging>jar</packaging>
-    <version>3.1.4-SNAPSHOT</version>
+    <version>3.1.7-SNAPSHOT</version>
     <name>WSO2 Carbon - Mediation Library Connector For Redis</name>
     <url>http://wso2.org</url>
     <properties>
@@ -199,15 +198,26 @@
         </dependency>
     </dependencies>
     <scm>
-        <connection>scm:git:https://github.com/wso2-extensions/esb-connector-redis.git
+        <connection>scm:git:https://github.com/ShammiL/esb-connector-redis.git
         </connection>
-        <url>https://github.com/wso2-extensions/esb-connector-redis.git</url>
-        <developerConnection>scm:git:https://github.com/wso2-extensions/esb-connector-redis
+        <url>https://github.com/ShammiL/esb-connector-redis.git</url>
+        <developerConnection>scm:git:https://github.com/ShammiL/esb-connector-redis
         </developerConnection>
         <tag>HEAD</tag>
     </scm>
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <configuration>
+                    <tagNameFormat>@{project.version}</tagNameFormat>
+<!--                    <autoResolveSnapshots>true</autoResolveSnapshots>-->
+<!--                    <autoVersionSubmodules>true</autoVersionSubmodules>-->
+<!--                    <allowReleasePluginSnapshot>true</allowReleasePluginSnapshot>-->
+<!--                    <allowTimestampedSnapshots>true</allowTimestampedSnapshots>-->
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -226,7 +236,7 @@
                         <id>email-library</id>
                         <phase>compile</phase>
                         <goals>
-                            <goal>attached</goal>
+                            <goal>single</goal>
                         </goals>
                         <configuration>
                             <finalName>${connector.name}-connector-${version}</finalName>
@@ -393,8 +403,8 @@
 <!--        </snapshotRepository>-->
         <repository>
             <id>nexus</id>
-            <name>Releases</name>
-            <url>https://1619-203-94-95-4.ngrok-free.app/repository/maven-releases/</url>
+            <name>maven-releases</name>
+            <url>https://1619-203-94-95-4.ngrok-free.app/repository/maven-releases</url>
         </repository>
     </distributionManagement>
 </project>
