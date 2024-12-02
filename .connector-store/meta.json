@@ -449,7 +449,7 @@
             "connections": [
                 {
                     "name": "Redis",
-                    "description" "Connection for Redis data operations."
+                    "description": "Connection for Redis data operations."
                 }
             ],
             "isHidden": false
