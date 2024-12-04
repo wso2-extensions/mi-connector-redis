@@ -24,7 +24,7 @@ jobs:
         id: extract_version
         run: |
           # Extract version from pom.xml using xmlstarlet
-          VERSION=$(xmlstarlet sel -t -m "/project/version" -v . pom.xml)
+          VERSION=$(grep -oPm1 "(?<=<version>)[^<]+" pom.xml)
           #echo "VERSION=$VERSION" >> $GITHUB_ENV  # Set version in environment variable
           VERSION_TAG="v$VERSION"
           echo "VERSION_TAG=$VERSION_TAG" >> $GITHUB_ENV
