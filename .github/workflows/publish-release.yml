@@ -20,6 +20,14 @@ jobs:
         with:
           distribution: 'adopt'
           java-version: 11
+      - name: Extract version from pom.xml
+        id: extract_version
+        run: |
+          # Extract version from pom.xml using xmlstarlet
+          VERSION=$(xmlstarlet sel -t -m "/project/version" -v . pom.xml)
+          #echo "VERSION=$VERSION" >> $GITHUB_ENV  # Set version in environment variable
+          VERSION_TAG="v$VERSION"
+          echo "VERSION_TAG=$VERSION_TAG" >> $GITHUB_ENV
       - name: Configure Maven settings file
         run: |
           mkdir -p ~/.m2
@@ -48,9 +56,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.WSO2_INTEGRATION_BOT_TOKEN }}
         run: |
-          mvn --batch-mode release:prepare release:perform -Dtag=v${{ github.event.inputs.version }}
-          TAG_NAME=$(git describe --tags --abbrev=0)
-          echo "TAG_NAME=$TAG_NAME" >> $GITHUB_ENV
+          mvn --batch-mode release:prepare release:perform -Dtag=${{ env.VERSION_TAG }}
+          # TAG_NAME=$(git describe --tags --abbrev=0)
+          # echo "TAG_NAME=$TAG_NAME" >> $GITHUB_ENV
       # - name: Restore target directory
       #   run: |
       #     if [ -f "target-backup.tar.gz" ]; then
@@ -63,8 +71,8 @@ jobs:
         run: |
           # echo $tag
           find target/ -type f -name '*-SNAPSHOT.zip' -exec rm -f {} \;
-          gh release create "${{ env.TAG_NAME }}" \
+          gh release create "${{ env.VERSION_TAG }}" \
             --repo="$GITHUB_REPOSITORY" \
-            --title="${{ env.TAG_NAME }}" \
+            --title="${{ env.VERSION_TAG }}" \
             --generate-notes \
             target/*.zip
