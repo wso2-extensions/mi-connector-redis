@@ -10,7 +10,6 @@ jobs:
 
     steps:
       - name: Checkout
-        id: checkout
         uses: actions/checkout@v2.3.3
         with:
           token: ${{ secrets.WSO2_INTEGRATION_BOT_TOKEN }}
@@ -20,13 +19,9 @@ jobs:
         with:
           distribution: 'adopt'
           java-version: 11
-      - name: Extract version from pom.xml
-        id: extract_version
+      - name: Extract project version
         run: |
-          # Extract version from pom.xml using xmlstarlet
           VERSION=$(grep -oPm1 "(?<=<version>)[^<]+" pom.xml | sed 's/-SNAPSHOT$//')
-          echo $VERSION
-          #echo "VERSION=$VERSION" >> $GITHUB_ENV  # Set version in environment variable
           VERSION_TAG="v$VERSION"
           echo "VERSION_TAG=$VERSION_TAG" >> $GITHUB_ENV
       - name: Configure Maven settings file
@@ -48,29 +43,15 @@ jobs:
       - name: Build artifacts
         run: |
           mvn clean install
-      # - name: Backup target directory
-      #   run: |
-      #     if [ -d "target" ]; then
-      #       tar -czf target-backup.tar.gz target/
-      #     fi
       - name: Deploy artifacts with Maven
         env:
           GITHUB_TOKEN: ${{ secrets.WSO2_INTEGRATION_BOT_TOKEN }}
         run: |
           mvn --batch-mode release:prepare release:perform -Dtag=${{ env.VERSION_TAG }}
-          # TAG_NAME=$(git describe --tags --abbrev=0)
-          # echo "TAG_NAME=$TAG_NAME" >> $GITHUB_ENV
-      # - name: Restore target directory
-      #   run: |
-      #     if [ -f "target-backup.tar.gz" ]; then
-      #       tar -xzf target-backup.tar.gz
-      #     fi
-      - name: Create Release with Assets
+      - name: Create Github Release with Assets
         env:
           GITHUB_TOKEN: ${{ secrets.WSO2_INTEGRATION_BOT_TOKEN }}
-          # tag: ${{ github.ref_name }}
         run: |
-          # echo $tag
           find target/ -type f -name '*-SNAPSHOT.zip' -exec rm -f {} \;
           gh release create "${{ env.VERSION_TAG }}" \
             --repo="$GITHUB_REPOSITORY" \
