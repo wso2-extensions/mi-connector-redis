@@ -41,3 +41,13 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.WSO2_INTEGRATION_BOT_TOKEN }}
         run: |
           mvn --batch-mode release:prepare release:perform
+      - name: Create Release with Assets
+        env:
+          GITHUB_TOKEN: ${{ secrets.WSO2_INTEGRATION_BOT_TOKEN }}
+          tag: ${{ github.ref_name }}
+        run: |
+          gh release create "$tag" \
+            --repo="$GITHUB_REPOSITORY" \
+            --title="${tag#v}" \
+            --generate-notes \
+            target/*.zip target/*.tar.gz
