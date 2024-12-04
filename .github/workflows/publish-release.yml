@@ -39,28 +39,32 @@ jobs:
       - name: Build artifacts
         run: |
           mvn clean install
-      - name: Backup target directory
-        run: |
-          if [ -d "target" ]; then
-            tar -czf target-backup.tar.gz target/
-          fi
+      # - name: Backup target directory
+      #   run: |
+      #     if [ -d "target" ]; then
+      #       tar -czf target-backup.tar.gz target/
+      #     fi
       - name: Deploy artifacts with Maven
         env:
           GITHUB_TOKEN: ${{ secrets.WSO2_INTEGRATION_BOT_TOKEN }}
         run: |
           mvn --batch-mode release:prepare release:perform
-      - name: Restore target directory
-        run: |
-          if [ -f "target-backup.tar.gz" ]; then
-            tar -xzf target-backup.tar.gz
-          fi
+          TAG_NAME=$(git describe --tags --abbrev=0)
+          echo "TAG_NAME=$TAG_NAME" >> $GITHUB_ENV
+      # - name: Restore target directory
+      #   run: |
+      #     if [ -f "target-backup.tar.gz" ]; then
+      #       tar -xzf target-backup.tar.gz
+      #     fi
       - name: Create Release with Assets
         env:
           GITHUB_TOKEN: ${{ secrets.WSO2_INTEGRATION_BOT_TOKEN }}
           tag: ${{ github.ref_name }}
         run: |
-          gh release create "$tag" \
+          echo $tag
+          find target/ -type f -name '*-SNAPSHOT.zip' -exec rm -f {} \;
+          gh release create "${{ env.TAG_NAME }}" \
             --repo="$GITHUB_REPOSITORY" \
-            --title="${tag#v}" \
+            --title="${{ env.TAG_NAME }}" \
             --generate-notes \
             target/*.zip
