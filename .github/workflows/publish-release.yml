@@ -63,4 +63,4 @@ jobs:
             --repo="$GITHUB_REPOSITORY" \
             --title="${tag#v}" \
             --generate-notes \
-            target/*.zip target/*.tar.gz
+            target/*.zip
