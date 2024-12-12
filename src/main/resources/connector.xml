@@ -30,4 +30,5 @@
         <dependency component="strings"/>
         <description>wso2 Redis connector library</description>
     </component>
+    <displayName>Redis</displayName>
 </connector>
