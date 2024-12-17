@@ -4,8 +4,8 @@
     "product": "MI",
     "category": "Developer Tools",
     "documentationUrl": "https://mi.docs.wso2.com/en/latest/reference/connectors/redis-connector/redis-connector-overview/",
-    "mavenGroupId": "org.wso2.carbon.connector",
-    "mavenArtifactId": "org.wso2.carbon.connector.redis",
+    "mavenGroupId": "org.wso2.integration.connector",
+    "mavenArtifactId": "mi-connector-redis",
     "description": "The Redis connector allows you to access the Redis commands through the WSO2 EI. Redis is an open source (BSD licensed), in-memory data structure store, used as a database, cache and message broker. It supports data structures such as strings, hashes, lists, sets, sorted sets with range queries, bitmaps, hyperloglogs and geospatial indexes with radius queries.\nIn latest version we have added following:\nPreviously we were creating a single pool for each cluster operation and closing it after each operation that's why read/write lock issue occurs (jmxRegister and jmxUnRegister on the same object). This Pr rectifies that and also avoids closing JedisCluster after each operation since It's no need to close the JedisCluster instance as it is handled by the JedisClusterConnectionPool itself.\n\nAlso introduced the \"isJmxEnabled\" property to enable JMX if required.",
     "status": "Active",
     "rank": 5,
@@ -15,6 +15,445 @@
         "nosql"
     ],
     "releases": [
+        {
+            "tagName": "v3.1.5",
+            "products": [
+                "MI 1.2.0",
+                "MI 4.3.0",
+                "MI 4.2.0",
+                "MI 4.1.0",
+                "MI 4.0.0"
+            ],
+            "operations": [
+                {
+                    "name": "init",
+                    "description": "configure Redis connector",
+                    "isHidden": false
+                },
+                {
+                    "name": "echo",
+                    "description": "echo the given string",
+                    "isHidden": false
+                },
+                {
+                    "name": "ping",
+                    "description": "ping the server",
+                    "isHidden": false
+                },
+                {
+                    "name": "quit",
+                    "description": "close the connection",
+                    "isHidden": false
+                },
+                {
+                    "name": "hDel",
+                    "description": "delete one or more hash fields",
+                    "isHidden": false
+                },
+                {
+                    "name": "hExists",
+                    "description": "determine if a hash field exists",
+                    "isHidden": false
+                },
+                {
+                    "name": "hGet",
+                    "description": "get the value of a hash field",
+                    "isHidden": false
+                },
+                {
+                    "name": "hGetAll",
+                    "description": "get all the fields and values in a hash",
+                    "isHidden": false
+                },
+                {
+                    "name": "hIncrBy",
+                    "description": "increment the integer value of a hash field by the given number",
+                    "isHidden": false
+                },
+                {
+                    "name": "hKeys",
+                    "description": "get all the fields in a hash",
+                    "isHidden": false
+                },
+                {
+                    "name": "hLen",
+                    "description": "get the number of fields in a hash",
+                    "isHidden": false
+                },
+                {
+                    "name": "hMGet",
+                    "description": "get the values of all the given hash fields",
+                    "isHidden": false
+                },
+                {
+                    "name": "hMSet",
+                    "description": "set multiple hash fields to multiple values",
+                    "isHidden": false
+                },
+                {
+                    "name": "hSet",
+                    "description": "set the string value of a hash field",
+                    "isHidden": false
+                },
+                {
+                    "name": "hSetnX",
+                    "description": "set the value of a hash field, only if the field does not exist",
+                    "isHidden": false
+                },
+                {
+                    "name": "hVals",
+                    "description": "get all the values in a hash",
+                    "isHidden": false
+                },
+                {
+                    "name": "del",
+                    "description": "delete a key",
+                    "isHidden": false
+                },
+                {
+                    "name": "exists",
+                    "description": "determine if a key exists",
+                    "isHidden": false
+                },
+                {
+                    "name": "expire",
+                    "description": "set a key's time to live in seconds",
+                    "isHidden": false
+                },
+                {
+                    "name": "expireAt",
+                    "description": "set the expiration for an existing key as a UNIX timestamp",
+                    "isHidden": false
+                },
+                {
+                    "name": "keys",
+                    "description": "find all keys matching the given pattern",
+                    "isHidden": false
+                },
+                {
+                    "name": "randomKey",
+                    "description": "return a random key from the keyspace",
+                    "isHidden": false
+                },
+                {
+                    "name": "rename",
+                    "description": "rename a key",
+                    "isHidden": false
+                },
+                {
+                    "name": "renamenX",
+                    "description": "rename a key, only if the new key does not exist",
+                    "isHidden": false
+                },
+                {
+                    "name": "ttl",
+                    "description": "get the time to live for a key",
+                    "isHidden": false
+                },
+                {
+                    "name": "type",
+                    "description": "determine the type stored at key",
+                    "isHidden": false
+                },
+                {
+                    "name": "blPop",
+                    "description": "remove and get the first element in a list or block until one is available",
+                    "isHidden": false
+                },
+                {
+                    "name": "brPop",
+                    "description": "remove an get the element in a list or block one is available",
+                    "isHidden": false
+                },
+                {
+                    "name": "lInsert",
+                    "description": "insert an element before or after another element in a list",
+                    "isHidden": false
+                },
+                {
+                    "name": "lLen",
+                    "description": "get a length of a list",
+                    "isHidden": false
+                },
+                {
+                    "name": "lPop",
+                    "description": "remove and get the first element in a list",
+                    "isHidden": false
+                },
+                {
+                    "name": "lPush",
+                    "description": "prepend one or multiple values to a list",
+                    "isHidden": false
+                },
+                {
+                    "name": "lPushX",
+                    "description": "prepend a value of an element in a list by its index",
+                    "isHidden": false
+                },
+                {
+                    "name": "lRange",
+                    "description": "get a range of elements from a list",
+                    "isHidden": false
+                },
+                {
+                    "name": "lRem",
+                    "description": "remove element from a list",
+                    "isHidden": false
+                },
+                {
+                    "name": "lSet",
+                    "description": "set the value of an element in a list by it's index",
+                    "isHidden": false
+                },
+                {
+                    "name": "lTrim",
+                    "description": "trim a list to the specified range",
+                    "isHidden": false
+                },
+                {
+                    "name": "rPopLPush",
+                    "description": "remove the list element in a list, prepend it to another list and return it",
+                    "isHidden": false
+                },
+                {
+                    "name": "rPush",
+                    "description": "append one or more multiple values to a list",
+                    "isHidden": false
+                },
+                {
+                    "name": "rPushX",
+                    "description": "append a value to a list, only if the list exists",
+                    "isHidden": false
+                },
+                {
+                    "name": "flushAll",
+                    "description": "delete all the keys of all the existing databases",
+                    "isHidden": false
+                },
+                {
+                    "name": "flushDB",
+                    "description": "delete all the keys of the currently selected database",
+                    "isHidden": false
+                },
+                {
+                    "name": "sadd",
+                    "description": "add one or more members to a set",
+                    "isHidden": false
+                },
+                {
+                    "name": "sDiffStore",
+                    "description": "subtract multiple sets and store the resulting set in a key",
+                    "isHidden": false
+                },
+                {
+                    "name": "sInter",
+                    "description": "intersect multiple sets",
+                    "isHidden": false
+                },
+                {
+                    "name": "sInterStore",
+                    "description": "intersect multiple sets and store the resulting set in a key",
+                    "isHidden": false
+                },
+                {
+                    "name": "sIsMember",
+                    "description": "determine if a given value is a member of a set",
+                    "isHidden": false
+                },
+                {
+                    "name": "sMembers",
+                    "description": "get the all members in a set",
+                    "isHidden": false
+                },
+                {
+                    "name": "sMove",
+                    "description": "move a member from one set to another",
+                    "isHidden": false
+                },
+                {
+                    "name": "sPop",
+                    "description": "remove and return one or multiple random members from a set",
+                    "isHidden": false
+                },
+                {
+                    "name": "sRandMember",
+                    "description": "get one or multiple random members from a set",
+                    "isHidden": false
+                },
+                {
+                    "name": "sRem",
+                    "description": "remove one or more members from a set",
+                    "isHidden": false
+                },
+                {
+                    "name": "sUnion",
+                    "description": "add multiple sets",
+                    "isHidden": false
+                },
+                {
+                    "name": "sUnionStore",
+                    "description": "add multiple sets and store the resulting set in a key",
+                    "isHidden": false
+                },
+                {
+                    "name": "zadd",
+                    "description": "add one or more members to a sorted set or update its score if it already exist",
+                    "isHidden": false
+                },
+                {
+                    "name": "zCount",
+                    "description": "count the members in a sorted set with scores within the given values",
+                    "isHidden": false
+                },
+                {
+                    "name": "zIncrBy",
+                    "description": "increment the score of a member in a sorted set",
+                    "isHidden": false
+                },
+                {
+                    "name": "zInterStore",
+                    "description": "intersect multiple sorted sets and store the resulting stored set in a new key",
+                    "isHidden": false
+                },
+                {
+                    "name": "zRange",
+                    "description": "return a range of members in a sorted set by index",
+                    "isHidden": false
+                },
+                {
+                    "name": "zRangeByScore",
+                    "description": "return a range of members in a sorted set by score with scores ordered from high to low",
+                    "isHidden": false
+                },
+                {
+                    "name": "zRank",
+                    "description": "determine the index of a member in a sorted set",
+                    "isHidden": false
+                },
+                {
+                    "name": "zRem",
+                    "description": "remove one or more members from a sorted set",
+                    "isHidden": false
+                },
+                {
+                    "name": "zRemRangeByRank",
+                    "description": "remove all members in a sorted set within the given indexes",
+                    "isHidden": false
+                },
+                {
+                    "name": "zRemRangeByScore",
+                    "description": "remove all members in a sorted set within the given scores",
+                    "isHidden": false
+                },
+                {
+                    "name": "zRevRange",
+                    "description": "return a range of members in a sorted set by index with scores ordered from high to low",
+                    "isHidden": false
+                },
+                {
+                    "name": "zRevRangeByScore",
+                    "description": "return a range of members in a sorted set by score with score ordered form high to low",
+                    "isHidden": false
+                },
+                {
+                    "name": "zRevRank",
+                    "description": "determine the index of a member in a sorted set with scores ordered from high to low",
+                    "isHidden": false
+                },
+                {
+                    "name": "zScore",
+                    "description": "get the score associated with the given member in a sorted set",
+                    "isHidden": false
+                },
+                {
+                    "name": "zUnionStore",
+                    "description": "add multiple stored sets and store the resulting stored set in a new key",
+                    "isHidden": false
+                },
+                {
+                    "name": "append",
+                    "description": "append a value to a key",
+                    "isHidden": false
+                },
+                {
+                    "name": "decrBy",
+                    "description": "decrement the integer value of key by the given number",
+                    "isHidden": false
+                },
+                {
+                    "name": "get",
+                    "description": "get the value of a key",
+                    "isHidden": false
+                },
+                {
+                    "name": "getObjectIdleTime",
+                    "description": "get the OBJECT IDLE TIME",
+                    "isHidden": false
+                },
+                {
+                    "name": "getRange",
+                    "description": "get the sub string of the key",
+                    "isHidden": false
+                },
+                {
+                    "name": "getSet",
+                    "description": "set the string value of a key and return its old value",
+                    "isHidden": false
+                },
+                {
+                    "name": "incrBy",
+                    "description": "increment the integer value of a key by the given amount",
+                    "isHidden": false
+                },
+                {
+                    "name": "mGet",
+                    "description": "get the values of all given keys",
+                    "isHidden": false
+                },
+                {
+                    "name": "mSet",
+                    "description": "set multiple keys to multiple values",
+                    "isHidden": false
+                },
+                {
+                    "name": "mSetnX",
+                    "description": "set multiple keys to multiple values, only if none of the key exist",
+                    "isHidden": false
+                },
+                {
+                    "name": "set",
+                    "description": "set the string value of a key",
+                    "isHidden": false
+                },
+                {
+                    "name": "setBit",
+                    "description": "sets of clears the bit at offset in the string value stored at key",
+                    "isHidden": false
+                },
+                {
+                    "name": "setnX",
+                    "description": "set the value of a key, only if the key does not exist",
+                    "isHidden": false
+                },
+                {
+                    "name": "setRange",
+                    "description": "overwrite part of a string at key stating at the specified offset",
+                    "isHidden": false
+                },
+                {
+                    "name": "strLen",
+                    "description": "get the length of the value stored in a key",
+                    "isHidden": false
+                }
+            ],
+            "connections": [
+                {
+                    "name": "Redis",
+                    "description": "Connection for Redis data operations."
+                }
+            ],
+            "isHidden": false
+        },
         {
             "tagName": "v3.1.4",
             "products": [
