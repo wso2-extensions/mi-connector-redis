@@ -1,0 +1,7 @@
+# Connector Descriptor File
+# Specifies the dependencies and repositories required for the connector.
+
+dependencies:
+  - groupId: redis.clients
+    artifactId: jedis
+    version: 3.6.0
