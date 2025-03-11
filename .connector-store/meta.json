@@ -29,7 +29,7 @@
                 {
                     "name": "init",
                     "description": "configure Redis connector",
-                    "isHidden": false
+                    "isHidden": true
                 },
                 {
                     "name": "echo",
@@ -468,7 +468,7 @@
                 {
                     "name": "init",
                     "description": "configure Redis connector",
-                    "isHidden": false
+                    "isHidden": true
                 },
                 {
                     "name": "echo",
@@ -907,7 +907,7 @@
                 {
                     "name": "init",
                     "description": "configure Redis connector",
-                    "isHidden": false
+                    "isHidden": true
                 },
                 {
                     "name": "echo",
