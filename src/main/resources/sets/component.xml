@@ -17,53 +17,65 @@
    under the License.
 -->
 
-<component name="sets" type="synapse/template">
+<component name="sets" type="synapse/template" displayName="Sets">
     <subComponents>
         <component name="sadd">
+            <displayName>Add to Set</displayName>
             <file>sadd.xml</file>
             <description>add one or more members to a set</description>
         </component>
         <component name="sDiffStore">
+            <displayName>Subtract and Store</displayName>
             <file>sDiffStore.xml</file>
             <description>subtract multiple sets and store the resulting set in a key</description>
         </component>
         <component name="sInter">
+            <displayName>Intersect</displayName>
             <file>sInter.xml</file>
             <description>intersect multiple sets</description>
         </component>
         <component name="sInterStore">
+            <displayName>Intersect and Store</displayName>
             <file>sInterStore.xml</file>
             <description>intersect multiple sets and store the resulting set in a key</description>
         </component>
         <component name="sIsMember">
+            <displayName>Is Member</displayName>
             <file>sIsMember.xml</file>
             <description>determine if a given value is a member of a set</description>
         </component>
         <component name="sMembers">
+            <displayName>Get Members</displayName>
             <file>sMembers.xml</file>
             <description>get the all members in a set</description>
         </component>
         <component name="sMove">
+            <displayName>Move</displayName>
             <file>sMove.xml</file>
             <description>move a member from one set to another</description>
         </component>
         <component name="sPop">
+            <displayName>Pop from Set</displayName>
             <file>sPop.xml</file>
             <description>remove and return one or multiple random members from a set</description>
         </component>
         <component name="sRandMember">
+            <displayName>Get Random Member</displayName>
             <file>sRandMember.xml</file>
             <description>get one or multiple random members from a set</description>
         </component>
         <component name="sRem">
+            <displayName>Remove from Set</displayName>
             <file>sRem.xml</file>
             <description>remove one or more members from a set</description>
         </component>
         <component name="sUnion">
+            <displayName>Union</displayName>
             <file>sUnion.xml</file>
             <description>add multiple sets</description>
         </component>
         <component name="sUnionStore">
+            <displayName>Union and Store</displayName>
             <file>sUnionStore.xml</file>
             <description>add multiple sets and store the resulting set in a key</description>
         </component>

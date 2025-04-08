@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "Output Schema for hLen Operation",
+  "description": "Output schema for the hLen operation in the connector.",
+  "properties": {
+    "payload": {
+      "type": "object",
+      "description": "The main response payload from the hLen operation."
+    },
+    "headers": {
+      "type": "object",
+      "description": "Transport headers returned by the hLen operation.",
+      "additionalProperties": true
+    },
+    "attributes": {
+      "type": "object",
+      "description": "Metadata about the hLen operation.",
+      "properties": {},
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "payload",
+    "headers",
+    "attributes"
+  ],
+  "additionalProperties": false
+}
