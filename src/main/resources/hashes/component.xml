@@ -17,53 +17,65 @@
    under the License.
 -->
 
-<component name="hashes" type="synapse/template">
+<component name="hashes" type="synapse/template" displayName="Hashes">
     <subComponents>
         <component name="hDel">
+            <displayName>Delete Hash</displayName>
             <file>hDel.xml</file>
             <description>delete one or more hash fields</description>
         </component>
         <component name="hExists">
+            <displayName>Hash Exists</displayName>
             <file>hExists.xml</file>
             <description>determine if a hash field exists</description>
         </component>
         <component name="hGet">
+            <displayName>Get Hash</displayName>
             <file>hGet.xml</file>
             <description>get the value of a hash field</description>
         </component>
         <component name="hGetAll">
+            <displayName>Get All From Hash</displayName>
             <file>hGetAll.xml</file>
             <description>get all the fields and values in a hash</description>
         </component>
         <component name="hIncrBy">
+            <displayName>Increment Hash</displayName>
             <file>hIncrBy.xml</file>
             <description>increment the integer value of a hash field by the given number</description>
         </component>
         <component name="hKeys">
+            <displayName>Get All Hash Keys</displayName>
             <file>hKeys.xml</file>
             <description>get all the fields in a hash</description>
         </component>
         <component name="hLen">
+            <displayName>Get Hash Length</displayName>
             <file>hLen.xml</file>
             <description>get the number of fields in a hash</description>
         </component>
         <component name="hMGet">
+            <displayName>Get Multiple Hash</displayName>
             <file>hMGet.xml</file>
             <description>get the values of all the given hash fields</description>
         </component>
         <component name="hMSet">
+            <displayName>Set Multiple Hash</displayName>
             <file>hMSet.xml</file>
             <description>set multiple hash fields to multiple values</description>
         </component>
         <component name="hSet">
+            <displayName>Set Hash</displayName>
             <file>hSet.xml</file>
             <description>set the string value of a hash field</description>
         </component>
         <component name="hSetnX">
+            <displayName>Set Hash If Not Exists</displayName>
             <file>hSetnX.xml</file>
             <description>set the value of a hash field, only if the field does not exist</description>
         </component>
         <component name="hVals">
+            <displayName>Get All Hash Values</displayName>
             <file>hVals.xml</file>
             <description>get all the values in a hash</description>
         </component>

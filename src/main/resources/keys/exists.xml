@@ -19,6 +19,8 @@
 
 <template xmlns="http://ws.apache.org/ns/synapse" name="exists">
     <parameter name="redisKey" description="the key to check whether exists or not"/>
+    <parameter name="responseVariable" description="The name of the variable to which the output should be stored."/>
+    <parameter name="overwriteBody" expression="Replace the Message Body in Message Context with the response of the operation."/>
     <sequence>
         <property name="redisKey" expression="$func:redisKey"/>
         <class name="org.wso2.carbon.connector.operations.Exists"/>
