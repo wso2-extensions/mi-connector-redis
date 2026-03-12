@@ -21,9 +21,7 @@ package org.wso2.carbon.connector.operations;
 import org.apache.synapse.MessageContext;
 import org.wso2.carbon.connector.core.AbstractConnector;
 import org.wso2.carbon.connector.core.ConnectException;
-import org.wso2.carbon.connector.util.Constants;
 import org.wso2.carbon.connector.util.RedisConstants;
-import org.wso2.carbon.connector.util.RedisUtils;
 import redis.clients.jedis.Jedis;
 
 public class HGet extends AbstractConnector {
@@ -50,10 +48,8 @@ public class HGet extends AbstractConnector {
                     }
                 }
             }
-            if (response != null) {
-                messageContext.setProperty(RedisConstants.RESULT, response);
-            } else {
-                response = Constants.NULL_STRING;
+            if (response == null) {
+                response = "";
             }
             messageContext.setProperty(RedisConstants.RESULT, response);
         } catch (Exception e) {

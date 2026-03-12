@@ -22,7 +22,6 @@ import org.apache.synapse.MessageContext;
 import org.wso2.carbon.connector.core.AbstractConnector;
 import org.wso2.carbon.connector.core.ConnectException;
 import org.wso2.carbon.connector.util.RedisConstants;
-import org.wso2.carbon.connector.util.Constants;
 import redis.clients.jedis.Jedis;
 
 public class Get extends AbstractConnector {
@@ -48,11 +47,10 @@ public class Get extends AbstractConnector {
                 }
             }
 
-            if (response != null) {
-                messageContext.setProperty(RedisConstants.RESULT, response);
-            } else {
-                response = Constants.NULL_STRING;
+            if (response == null) {
+                response = "";
             }
+            messageContext.setProperty(RedisConstants.RESULT, response);
         } catch (Exception e) {
             handleException("Error while connecting the server or calling the redis method", e, messageContext);
         } finally {
