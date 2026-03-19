@@ -17,7 +17,7 @@
    under the License.
 -->
 
-<component name="connection" type="synapse/template">
+<component name="connection" type="synapse/template" displayName="Connection">
     <subComponents>
         <component name="echo">
             <file>echo.xml</file>

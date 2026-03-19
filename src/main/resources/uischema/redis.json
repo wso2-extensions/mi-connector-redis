@@ -29,89 +29,416 @@
                 {
                   "type": "attribute",
                   "value": {
-                    "name": "redisHost",
-                    "displayName": "redisHost",
+                    "name": "name",
+                    "displayName": "Name",
                     "inputType": "string",
                     "defaultValue": "",
                     "required": "true",
-                    "helpTip": "Host name of the redis server"
+                    "helpTip": "Unique name the connection is identified by"
+                  }
+                },
+                {
+                  "type": "attributeGroup",
+                  "value": {
+                    "groupName": "Connection Mode",
+                    "elements": [
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "redisClusterEnabled",
+                          "displayName": "Cluster Mode",
+                          "inputType": "checkbox",
+                          "defaultValue": "false",
+                          "required": "false",
+                          "helpTip": "Enable Redis cluster mode"
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "sentinelEnabled",
+                          "displayName": "Sentinel Mode",
+                          "inputType": "checkbox",
+                          "defaultValue": "false",
+                          "required": "false",
+                          "helpTip": "Enable Redis sentinel mode"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "redisHost",
+                    "displayName": "Redis Host",
+                    "inputType": "string",
+                    "defaultValue": "localhost",
+                    "required": "true",
+                    "helpTip": "Host name of the Redis server",
+                    "visibleIf": "${redisClusterEnabled == false && sentinelEnabled == false}"
                   }
                 },
                 {
                   "type": "attribute",
                   "value": {
                     "name": "redisPort",
-                    "displayName": "redisPort",
+                    "displayName": "Redis Port",
                     "inputType": "string",
                     "defaultValue": "6379",
                     "required": "true",
-                    "helpTip": "The port number of the redis server"
+                    "helpTip": "The port number of the Redis server",
+                    "visibleIf": "${redisClusterEnabled == false && sentinelEnabled == false}"
                   }
                 },
                 {
                   "type": "attribute",
                   "value": {
-                    "name": "maxConnections",
-                    "displayName": "maxConnections",
+                    "name": "redisConnectionURI",
+                    "displayName": "Redis Connection URI",
                     "inputType": "string",
                     "defaultValue": "",
                     "required": "false",
-                    "helpTip": " The maximum number of objects (including both idle and active/borrowed) that can exist within the pool at the same time"
+                    "helpTip": "Redis connection URI",
+                    "visibleIf": "${redisClusterEnabled == false && sentinelEnabled == false}"
                   }
                 },
                 {
                   "type": "attribute",
                   "value": {
-                    "name": "maxIdleConnections",
-                    "displayName": "maxIdleConnections",
+                    "name": "weight",
+                    "displayName": "Weight",
                     "inputType": "string",
                     "defaultValue": "",
                     "required": "false",
-                    "helpTip": "The maximum number of objects that can remain idle in the pool"
+                    "helpTip": "Weight of the shard",
+                    "visibleIf": "${redisClusterEnabled == false && sentinelEnabled == false}"
                   }
                 },
                 {
                   "type": "attribute",
                   "value": {
-                    "name": "maxWaitTime",
-                    "displayName": "maxWaitTime",
+                    "name": "clusterNodes",
+                    "displayName": "Cluster Nodes",
                     "inputType": "string",
                     "defaultValue": "",
                     "required": "false",
-                    "helpTip": "The maximum amount of time that the borrowObject() method should block"
+                    "helpTip": "Comma separated list of the cluster nodes (host:port)",
+                    "visibleIf": "${redisClusterEnabled == true}"
                   }
                 },
                 {
                   "type": "attribute",
                   "value": {
-                    "name": "evictionCheckInterval",
-                    "displayName": "evictionCheckInterval",
+                    "name": "sentinels",
+                    "displayName": "Sentinels",
                     "inputType": "string",
                     "defaultValue": "",
                     "required": "false",
-                    "helpTip": "The time interval between runs of the idle object evictor thread"
+                    "helpTip": "Comma separated list of sentinels",
+                    "visibleIf": "${sentinelEnabled == true}"
                   }
                 },
                 {
                   "type": "attribute",
                   "value": {
-                    "name": "minEvictionTime",
-                    "displayName": "minEvictionTime",
+                    "name": "masterName",
+                    "displayName": "Master Name",
                     "inputType": "string",
                     "defaultValue": "",
                     "required": "false",
-                    "helpTip": "The minimum amount of time an object must sit idle in the pool before it is eligible for eviction by the idle object evictor "
+                    "helpTip": "Master name for sentinel",
+                    "visibleIf": "${sentinelEnabled == true}"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "type": "attributeGroup",
+            "value": {
+              "groupName": "Advanced",
+              "elements": [
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "useSsl",
+                    "displayName": "Use SSL",
+                    "inputType": "checkbox",
+                    "defaultValue": "false",
+                    "required": "false",
+                    "helpTip": "A flag to switch between SSL and non-SSL"
                   }
                 },
                 {
                   "type": "attribute",
                   "value": {
-                    "name": "exhaustedAction",
-                    "displayName": "exhaustedAction",
+                    "name": "dbNumber",
+                    "displayName": "Database Number",
+                    "inputType": "string",
+                    "defaultValue": "0",
+                    "required": "false",
+                    "helpTip": "Database number to use"
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "cacheKey",
+                    "displayName": "Cache Key",
                     "inputType": "string",
                     "defaultValue": "",
                     "required": "false",
-                    "helpTip": "Determines the action to take when the borrowObject() method is called, but the pool is exhausted"
+                    "helpTip": "Key of the cache"
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "redisConnectionPoolId",
+                    "displayName": "Connection Pool ID",
+                    "inputType": "string",
+                    "defaultValue": "",
+                    "required": "false",
+                    "helpTip": "The connection pool ID for creating a unique pool"
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "clientName",
+                    "displayName": "Client Name",
+                    "inputType": "string",
+                    "defaultValue": "",
+                    "required": "false",
+                    "helpTip": "Name of the client"
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "jmxEnabled",
+                    "displayName": "JMX Enabled",
+                    "inputType": "checkbox",
+                    "defaultValue": "false",
+                    "required": "false",
+                    "helpTip": "A flag to enable JMX"
+                  }
+                },
+                {
+                  "type": "attributeGroup",
+                  "value": {
+                    "groupName": "Timeouts",
+                    "elements": [
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "redisConnectionTimeout",
+                          "displayName": "Connection Timeout",
+                          "inputType": "string",
+                          "defaultValue": "",
+                          "required": "false",
+                          "helpTip": "Time to live the connection in milliseconds"
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "redisTimeout",
+                          "displayName": "Redis Timeout",
+                          "inputType": "string",
+                          "defaultValue": "",
+                          "required": "false",
+                          "helpTip": "Time to live the server in milliseconds"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "attributeGroup",
+                  "value": {
+                    "groupName": "Connection Pool",
+                    "elements": [
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "maxConnections",
+                          "displayName": "Max Connections",
+                          "inputType": "string",
+                          "defaultValue": "",
+                          "required": "false",
+                          "helpTip": "The maximum number of objects (including both idle and active/borrowed) that can exist within the pool at the same time"
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "maxIdleConnections",
+                          "displayName": "Max Idle Connections",
+                          "inputType": "string",
+                          "defaultValue": "",
+                          "required": "false",
+                          "helpTip": "The maximum number of objects that can remain idle in the pool"
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "maxWaitTime",
+                          "displayName": "Max Wait Time",
+                          "inputType": "string",
+                          "defaultValue": "",
+                          "required": "false",
+                          "helpTip": "The maximum amount of time that the borrowObject() method should block"
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "evictionCheckInterval",
+                          "displayName": "Eviction Check Interval",
+                          "inputType": "string",
+                          "defaultValue": "",
+                          "required": "false",
+                          "helpTip": "The time interval between runs of the idle object evictor thread"
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "minEvictionTime",
+                          "displayName": "Min Eviction Time",
+                          "inputType": "string",
+                          "defaultValue": "",
+                          "required": "false",
+                          "helpTip": "The minimum amount of time an object must sit idle in the pool before it is eligible for eviction by the idle object evictor"
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "exhaustedAction",
+                          "displayName": "Exhausted Action",
+                          "inputType": "string",
+                          "defaultValue": "",
+                          "required": "false",
+                          "helpTip": "Determines the action to take when the borrowObject() method is called, but the pool is exhausted"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "attributeGroup",
+                  "value": {
+                    "groupName": "Cluster Settings",
+                    "elements": [
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "maxAttempts",
+                          "displayName": "Max Attempts",
+                          "inputType": "string",
+                          "defaultValue": "",
+                          "required": "false",
+                          "helpTip": "The number of retries",
+                          "visibleIf": "${redisClusterEnabled == true}"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "attributeGroup",
+                  "value": {
+                    "groupName": "Sentinel Settings",
+                    "elements": [
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "sentinelPassword",
+                          "displayName": "Sentinel Password",
+                          "inputType": "password",
+                          "defaultValue": "",
+                          "required": "false",
+                          "helpTip": "Sentinel password",
+                          "visibleIf": "${sentinelEnabled == true}"
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "sentinelUser",
+                          "displayName": "Sentinel User",
+                          "inputType": "string",
+                          "defaultValue": "",
+                          "required": "false",
+                          "helpTip": "Sentinel user name",
+                          "visibleIf": "${sentinelEnabled == true}"
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "sentinelClientName",
+                          "displayName": "Sentinel Client Name",
+                          "inputType": "string",
+                          "defaultValue": "",
+                          "required": "false",
+                          "helpTip": "Sentinel client name",
+                          "visibleIf": "${sentinelEnabled == true}"
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "masterUser",
+                          "displayName": "Master User",
+                          "inputType": "string",
+                          "defaultValue": "",
+                          "required": "false",
+                          "helpTip": "Master user name",
+                          "visibleIf": "${sentinelEnabled == true}"
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "masterPassword",
+                          "displayName": "Master Password",
+                          "inputType": "password",
+                          "defaultValue": "",
+                          "required": "false",
+                          "helpTip": "Master password",
+                          "visibleIf": "${sentinelEnabled == true}"
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "sentinelConnectionTimeout",
+                          "displayName": "Sentinel Connection Timeout",
+                          "inputType": "string",
+                          "defaultValue": "",
+                          "required": "false",
+                          "helpTip": "Connection timeout for sentinel",
+                          "visibleIf": "${sentinelEnabled == true}"
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "sentinelSoTimeout",
+                          "displayName": "Sentinel Socket Timeout",
+                          "inputType": "string",
+                          "defaultValue": "",
+                          "required": "false",
+                          "helpTip": "Socket timeout for sentinel",
+                          "visibleIf": "${sentinelEnabled == true}"
+                        }
+                      }
+                    ]
                   }
                 }
               ]

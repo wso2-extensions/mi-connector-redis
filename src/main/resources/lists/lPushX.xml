@@ -20,6 +20,8 @@
 <template xmlns="http://ws.apache.org/ns/synapse" name="lPushX">
     <parameter name="redisKey" description="the name of the key"/>
     <parameter name="redisString" description="the value to be added to the key"/>
+    <parameter name="responseVariable" description="The name of the variable to which the output should be stored."/>
+    <parameter name="overwriteBody" expression="Replace the Message Body in Message Context with the response of the operation."/>
     <sequence>
         <property name="redisKey" expression="$func:redisKey"/>
         <property name="redisString" expression="$func:redisString"/>

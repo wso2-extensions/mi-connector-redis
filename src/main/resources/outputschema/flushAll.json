@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "Output Schema for flushAll Operation",
+  "description": "Output schema for the flushAll operation in the connector.",
+  "properties": {
+    "payload": {
+      "type": "object",
+      "description": "The main response payload from the flushAll operation."
+    },
+    "headers": {
+      "type": "object",
+      "description": "Transport headers returned by the flushAll operation.",
+      "additionalProperties": true
+    },
+    "attributes": {
+      "type": "object",
+      "description": "Metadata about the flushAll operation.",
+      "properties": {},
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "payload",
+    "headers",
+    "attributes"
+  ],
+  "additionalProperties": false
+}

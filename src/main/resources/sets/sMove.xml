@@ -21,6 +21,8 @@
     <parameter name="redisSrckey" description="the name of the key"/>
     <parameter name="redisDstkey" description="the value to be added to the key"/>
     <parameter name="redisMember" description="the value to be added to the key"/>
+    <parameter name="responseVariable" description="The name of the variable to which the output should be stored."/>
+    <parameter name="overwriteBody" expression="Replace the Message Body in Message Context with the response of the operation."/>
     <sequence>
         <property name="redisSrckey" expression="$func:redisSrckey"/>
         <property name="redisDstkey" expression="$func:redisDstkey"/>

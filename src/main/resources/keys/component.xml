@@ -17,45 +17,55 @@
    under the License.
 -->
 
-<component name="keys" type="synapse/template">
+<component name="keys" type="synapse/template" displayName="Keys">
     <subComponents>
         <component name="del">
+            <displayName>Delete Key</displayName>
             <file>del.xml</file>
             <description>delete a key</description>
         </component>
         <component name="exists">
+            <displayName>Key Exists</displayName>
             <file>exists.xml</file>
             <description>determine if a key exists</description>
         </component>
         <component name="expire">
+            <displayName>Expire Key</displayName>
             <file>expire.xml</file>
             <description>set a key's time to live in seconds</description>
         </component>
         <component name="expireAt">
+            <displayName>Expire Key At</displayName>
             <file>expireAt.xml</file>
             <description>set the expiration for an existing key as a UNIX timestamp</description>
         </component>
         <component name="keys">
+            <displayName>Keys</displayName>
             <file>keys.xml</file>
             <description>find all keys matching the given pattern</description>
         </component>
         <component name="randomKey">
+            <displayName>Random Key</displayName>
             <file>randomKey.xml</file>
             <description>return a random key from the keyspace</description>
         </component>
         <component name="rename">
+            <displayName>Rename Key</displayName>
             <file>rename.xml</file>
             <description>rename a key</description>
         </component>
         <component name="renamenX">
+            <displayName>Rename Key (If New Key does not exist)</displayName>
             <file>renamenX.xml</file>
             <description>rename a key, only if the new key does not exist</description>
         </component>
         <component name="ttl">
+            <displayName>Get Time to Live</displayName>
             <file>ttl.xml</file>
             <description>get the time to live for a key</description>
         </component>
         <component name="type">
+            <displayName>Get Type</displayName>
             <file>type.xml</file>
             <description>determine the type stored at key</description>
         </component>
