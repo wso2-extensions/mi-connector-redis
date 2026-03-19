@@ -49,7 +49,7 @@ public class Get extends AbstractConnector {
             }
 
             if (response == null) {
-                response = Constants.NULL_STRING;
+                response = "";
             }
             messageContext.setProperty(RedisConstants.RESULT, response);
         } catch (Exception e) {
