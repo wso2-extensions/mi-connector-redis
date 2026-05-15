@@ -17,13 +17,15 @@
    under the License.
 -->
 
-<component name="server" type="synapse/template">
+<component name="server" type="synapse/template" displayName="server">
     <subComponents>
         <component name="flushAll">
+            <displayName>Flush All DB</displayName>
             <file>flushAll.xml</file>
             <description>delete all the keys of all the existing databases</description>
         </component>
         <component name="flushDB">
+            <displayName>Flush Current DB</displayName>
             <file>flushDB.xml</file>
             <description>delete all the keys of the currently selected database</description>
         </component>

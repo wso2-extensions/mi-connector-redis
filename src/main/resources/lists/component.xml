@@ -17,61 +17,75 @@
    under the License.
 -->
 
-<component name="lists" type="synapse/template">
+<component name="lists" type="synapse/template" displayName="Lists">
     <subComponents>
         <component name="blPop">
+            <displayName>Pop from Head (Blocking)</displayName>
             <file>blPop.xml</file>
             <description>remove and get the first element in a list or block until one is available</description>
         </component>
         <component name="brPop">
+            <displayName>Pop from Tail (Blocking)</displayName>
             <file>brPop.xml</file>
             <description>remove an get the element in a list or block one is available</description>
         </component>
         <component name="lInsert">
+            <displayName>Insert to list</displayName>
             <file>lInsert.xml</file>
             <description>insert an element before or after another element in a list</description>
         </component>
         <component name="lLen">
+            <displayName>Get Length</displayName>
             <file>lLen.xml</file>
             <description>get a length of a list</description>
         </component>
         <component name="lPop">
+            <displayName>Pop from List</displayName>
             <file>lPop.xml</file>
             <description>remove and get the first element in a list</description>
         </component>
         <component name="lPush">
+            <displayName>Push to Head (Create key if not exist)</displayName>
             <file>lPush.xml</file>
             <description>prepend one or multiple values to a list</description>
         </component>
         <component name="lPushX">
+            <displayName>Push to Head</displayName>
             <file>lPushX.xml</file>
             <description>prepend a value of an element in a list by its index</description>
         </component>
         <component name="lRange">
+            <displayName>Get Range of elements</displayName>
             <file>lRange.xml</file>
             <description>get a range of elements from a list</description>
         </component>
         <component name="lRem">
+            <displayName>Remove from List</displayName>
             <file>lRem.xml</file>
             <description>remove element from a list</description>
         </component>
         <component name="lSet">
+            <displayName>Set List Element</displayName>
             <file>lSet.xml</file>
             <description>set the value of an element in a list by it's index</description>
         </component>
         <component name="lTrim">
+            <displayName>Trim List</displayName>
             <file>lTrim.xml</file>
             <description>trim a list to the specified range</description>
         </component>
         <component name="rPopLPush">
+            <displayName>Pop and Push</displayName>
             <file>rPopLPush.xml</file>
             <description>remove the list element in a list, prepend it to another list and return it</description>
         </component>
         <component name="rPush">
+            <displayName>Push to Tail (Create key if not exist)</displayName>
             <file>rPush.xml</file>
             <description>append one or more multiple values to a list</description>
         </component>
         <component name="rPushX">
+            <displayName>Push to Tail</displayName>
             <file>rPushX.xml</file>
             <description>append a value to a list, only if the list exists</description>
         </component>
