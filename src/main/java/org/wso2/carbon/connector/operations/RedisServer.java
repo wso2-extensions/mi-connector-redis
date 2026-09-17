@@ -50,6 +50,9 @@ public class RedisServer {
     private static JedisCluster jedisCluster = null;
     private static JedisSentinelPool jedisSentinelPool = null;
     private int maxConnections;
+    private int maxIdleConnections;
+    private Long evictionCheckIntervalMillis;
+    private Long minEvictionTimeMillis;
     private long maxWaitMillis = RedisConstants.DEFAULT_MAX_WAIT_MILLIS;
     private Boolean isClusterEnabled = false;
     private Boolean isJmxEnabled = false;
@@ -96,6 +99,40 @@ public class RedisServer {
             maxConnections = RedisConstants.DEFAULT_MAX_CONNECTIONS;
         }
 
+        String maxIdleConnectionsProp = (String) messageContext.getProperty(RedisConstants.MAX_IDLE_CONNECTIONS);
+        if (maxIdleConnectionsProp != null && !maxIdleConnectionsProp.isEmpty()) {
+            try {
+                maxIdleConnections = Integer.parseInt(maxIdleConnectionsProp);
+            } catch (NumberFormatException e) {
+                throw new SynapseException(
+                        "Invalid input for \"maxIdleConnections\". Cannot parse " + maxIdleConnectionsProp
+                                + " to an Integer.", e);
+            }
+        } else {
+            maxIdleConnections = maxConnections;
+        }
+
+        String evictionCheckIntervalProp = (String) messageContext.getProperty(RedisConstants.EVICTION_CHECK_INTERVAL);
+        if (evictionCheckIntervalProp != null && !evictionCheckIntervalProp.isEmpty()) {
+            try {
+                evictionCheckIntervalMillis = Long.parseLong(evictionCheckIntervalProp);
+            } catch (NumberFormatException e) {
+                throw new SynapseException(
+                        "Invalid input for \"evictionCheckInterval\". Cannot parse " + evictionCheckIntervalProp
+                                + " to a Long.", e);
+            }
+        }
+
+        String minEvictionTimeProp = (String) messageContext.getProperty(RedisConstants.MIN_EVICTION_TIME);
+        if (minEvictionTimeProp != null && !minEvictionTimeProp.isEmpty()) {
+            try {
+                minEvictionTimeMillis = Long.parseLong(minEvictionTimeProp);
+            } catch (NumberFormatException e) {
+                throw new SynapseException(
+                        "Invalid input for \"minEvictionTime\". Cannot parse " + minEvictionTimeProp
+                                + " to a Long.", e);
+            }
+        }
         String maxWaitTimeProp = (String) messageContext.getProperty(RedisConstants.MAX_WAIT_TIME);
         if (maxWaitTimeProp != null && !maxWaitTimeProp.isEmpty()) {
             try {
@@ -146,8 +183,14 @@ public class RedisServer {
                                 boolean ssl, MessageContext messageContext) {
         final JedisPoolConfig poolConfig = new JedisPoolConfig();
         poolConfig.setMaxTotal(maxConnections); //The maximum number of connections that are supported by the pool.
-        poolConfig.setMaxIdle(maxConnections); // Is the actual maximum number of connections required by workloads
-        // (maxTotal = maxIdle)
+        poolConfig.setMaxIdle(maxIdleConnections); // The maximum number of idle connections kept in the pool
+        // (defaults to maxConnections when maxIdleConnections isn't configured)
+        if (evictionCheckIntervalMillis != null) {
+            poolConfig.setTimeBetweenEvictionRunsMillis(evictionCheckIntervalMillis);
+        }
+        if (minEvictionTimeMillis != null) {
+            poolConfig.setMinEvictableIdleTimeMillis(minEvictionTimeMillis);
+        }
         poolConfig.setTestOnBorrow(false); //set to default false
         poolConfig.setTestOnReturn(false); //set to default false
         poolConfig.setTestWhileIdle(true);
@@ -297,7 +340,13 @@ public class RedisServer {
                 if (jedisSentinelPool == null) {
                     GenericObjectPoolConfig config = new GenericObjectPoolConfig();
                     config.setMaxTotal(maxConnections);
-                    config.setMaxIdle(maxConnections);
+                    config.setMaxIdle(maxIdleConnections);
+                    if (evictionCheckIntervalMillis != null) {
+                        config.setTimeBetweenEvictionRunsMillis(evictionCheckIntervalMillis);
+                    }
+                    if (minEvictionTimeMillis != null) {
+                        config.setMinEvictableIdleTimeMillis(minEvictionTimeMillis);
+                    }
                     config.setMaxWaitMillis(maxWaitMillis);
                     JedisSentinelPool jedisSentinelPool = new JedisSentinelPool(masterName, sentinels, config,
                             connectionTimeout, soTimeout, masterUser, masterPassword, dbNumber, clientName,
@@ -355,8 +404,14 @@ public class RedisServer {
         GenericObjectPoolConfig jedisPoolConfig = new GenericObjectPoolConfig<>();
         jedisPoolConfig.setJmxEnabled(isJmxEnabled);
         jedisPoolConfig.setMaxTotal(maxConnections); //The maximum number of connections that are supported by the pool.
-        jedisPoolConfig.setMaxIdle(maxConnections); // Is the actual maximum number of connections required by workloads
-        // (maxTotal = maxIdle)
+        jedisPoolConfig.setMaxIdle(maxIdleConnections); // The maximum number of idle connections kept in the pool
+        // (defaults to maxConnections when maxIdleConnections isn't configured)
+        if (evictionCheckIntervalMillis != null) {
+            jedisPoolConfig.setTimeBetweenEvictionRunsMillis(evictionCheckIntervalMillis);
+        }
+        if (minEvictionTimeMillis != null) {
+            jedisPoolConfig.setMinEvictableIdleTimeMillis(minEvictionTimeMillis);
+        }
         jedisPoolConfig.setTestOnBorrow(false); //set to default false
         jedisPoolConfig.setTestOnReturn(false); //set to default false
         jedisPoolConfig.setTestWhileIdle(true);

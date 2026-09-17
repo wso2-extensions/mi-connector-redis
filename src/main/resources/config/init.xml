@@ -25,6 +25,12 @@
     <parameter name="useSsl" description="a flag to switch between SSL and non-SSL"/>
     <parameter name="maxConnections"
                description="The maximum number of connections that are supported by the jedis pool"/>
+    <parameter name="maxIdleConnections"
+               description="The maximum number of idle connections to keep in the pool. If not set, defaults to maxConnections"/>
+    <parameter name="evictionCheckInterval"
+               description="The time (in milliseconds) between runs of the idle connection evictor"/>
+    <parameter name="minEvictionTime"
+               description="The minimum time (in milliseconds) a connection may sit idle before it is eligible for eviction"/>
     <parameter name="maxWaitTime"
                description="The maximum time (in milliseconds) a thread will wait for a connection from the pool when it is exhausted. If not set, waits indefinitely."/>
     <parameter name="redisConnectionPoolId" description="the connection pool id for create unique pool"/>
@@ -144,6 +150,24 @@
             <then/>
             <else>
                 <property name="maxConnections" expression="$func:maxConnections"/>
+            </else>
+        </filter>
+        <filter xpath="$func:maxIdleConnections = '' or  not(string($func:maxIdleConnections))">
+            <then/>
+            <else>
+                <property name="maxIdleConnections" expression="$func:maxIdleConnections"/>
+            </else>
+        </filter>
+        <filter xpath="$func:evictionCheckInterval = '' or  not(string($func:evictionCheckInterval))">
+            <then/>
+            <else>
+                <property name="evictionCheckInterval" expression="$func:evictionCheckInterval"/>
+            </else>
+        </filter>
+        <filter xpath="$func:minEvictionTime = '' or  not(string($func:minEvictionTime))">
+            <then/>
+            <else>
+                <property name="minEvictionTime" expression="$func:minEvictionTime"/>
             </else>
         </filter>
         <filter xpath="$func:weight = '' or  not(string($func:weight))">
