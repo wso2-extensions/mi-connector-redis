@@ -25,6 +25,8 @@
     <parameter name="useSsl" description="a flag to switch between SSL and non-SSL"/>
     <parameter name="maxConnections"
                description="The maximum number of connections that are supported by the jedis pool"/>
+    <parameter name="maxWaitTime"
+               description="The maximum time (in milliseconds) a thread will wait for a connection from the pool when it is exhausted. If not set, waits indefinitely."/>
     <parameter name="redisConnectionPoolId" description="the connection pool id for create unique pool"/>
 
     <!-- standalone mode specific parameters-->
@@ -100,6 +102,12 @@
             <then/>
             <else>
                 <property name="redisConnectionTimeout" expression="$func:redisConnectionTimeout"/>
+            </else>
+        </filter>
+        <filter xpath="$func:maxWaitTime = '' or  not(string($func:maxWaitTime))">
+            <then/>
+            <else>
+                <property name="maxWaitTime" expression="$func:maxWaitTime"/>
             </else>
         </filter>
         <filter xpath="$func:redisClusterEnabled = '' or  not(string($func:redisClusterEnabled))">

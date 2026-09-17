@@ -74,6 +74,7 @@ public class RedisConstants {
     public static final String MAX_ATTEMPTS = "maxAttempts";
     public static final String WEIGHT = "weight";
     public static final String MAX_CONNECTIONS = "maxConnections";
+    public static final String MAX_WAIT_TIME = "maxWaitTime";
     public static final String IS_JMX_ENABLED = "jmxEnabled";
     public static final String CONNECTION_POOL_ID = "redisConnectionPoolId";
     public static final String INTERNAL_POOL_ID_SEPARATOR = "INTERNAL_POOL_ID_";
@@ -82,6 +83,7 @@ public class RedisConstants {
     public static final int DEFAULT_TIMEOUT = 2000;
     public static final int DEFAULT_MAX_ATTEMPTS = 5;
     public static final int DEFAULT_MAX_CONNECTIONS = 8;
+    public static final long DEFAULT_MAX_WAIT_MILLIS = -1L;
     public static final String DEFAULT_CONNECTION_POOL_ID = "0";
     public static final int DEFAULT_WEIGHT = 1;
     
