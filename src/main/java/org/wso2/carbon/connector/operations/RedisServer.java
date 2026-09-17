@@ -53,6 +53,7 @@ public class RedisServer {
     private int maxIdleConnections;
     private Long evictionCheckIntervalMillis;
     private Long minEvictionTimeMillis;
+    private long maxWaitMillis = RedisConstants.DEFAULT_MAX_WAIT_MILLIS;
     private Boolean isClusterEnabled = false;
     private Boolean isJmxEnabled = false;
     private int soTimeout = RedisConstants.DEFAULT_TIMEOUT;
@@ -132,6 +133,17 @@ public class RedisServer {
                                 + " to a Long.", e);
             }
         }
+        String maxWaitTimeProp = (String) messageContext.getProperty(RedisConstants.MAX_WAIT_TIME);
+        if (maxWaitTimeProp != null && !maxWaitTimeProp.isEmpty()) {
+            try {
+                maxWaitMillis = Long.parseLong(maxWaitTimeProp);
+            } catch (NumberFormatException e) {
+                throw new SynapseException(
+                        "Invalid input for \"maxWaitTime\". Cannot parse " + maxWaitTimeProp + " to a Long.", e);
+            }
+        }
+        // else: leave maxWaitMillis at RedisConstants.DEFAULT_MAX_WAIT_MILLIS (-1, block
+        // indefinitely) - preserves the existing behaviour when maxWaitTime isn't configured.
 
         if (sentinelEnabled != null && !sentinelEnabled.isEmpty()) {
             isSentinelEnabled = Boolean.parseBoolean(sentinelEnabled);
@@ -184,6 +196,7 @@ public class RedisServer {
         poolConfig.setTestWhileIdle(true);
         poolConfig.setNumTestsPerEvictionRun(3);
         poolConfig.setBlockWhenExhausted(true);
+        poolConfig.setMaxWaitMillis(maxWaitMillis);
         JedisPool jedisPool = new JedisPool(poolConfig, host, port, connectionTimeout, soTimeout, null,
                 dbNumber, null, ssl);
         this.jedisPool = jedisPool;
@@ -334,6 +347,7 @@ public class RedisServer {
                     if (minEvictionTimeMillis != null) {
                         config.setMinEvictableIdleTimeMillis(minEvictionTimeMillis);
                     }
+                    config.setMaxWaitMillis(maxWaitMillis);
                     JedisSentinelPool jedisSentinelPool = new JedisSentinelPool(masterName, sentinels, config,
                             connectionTimeout, soTimeout, masterUser, masterPassword, dbNumber, clientName,
                             sentinelConnectionTimeout, sentinelSoTimeout, sentinelUser, sentinelPassword,
@@ -403,6 +417,7 @@ public class RedisServer {
         jedisPoolConfig.setTestWhileIdle(true);
         jedisPoolConfig.setNumTestsPerEvictionRun(3);
         jedisPoolConfig.setBlockWhenExhausted(true);
+        jedisPoolConfig.setMaxWaitMillis(maxWaitMillis);
 
         //Use double lock to avoid creating a new Jedis Cluster Connection Pool for each request.
         if (this.jedisCluster == null) {

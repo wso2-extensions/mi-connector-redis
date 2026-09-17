@@ -31,6 +31,8 @@
                description="The time (in milliseconds) between runs of the idle connection evictor"/>
     <parameter name="minEvictionTime"
                description="The minimum time (in milliseconds) a connection may sit idle before it is eligible for eviction"/>
+    <parameter name="maxWaitTime"
+               description="The maximum time (in milliseconds) a thread will wait for a connection from the pool when it is exhausted. If not set, waits indefinitely."/>
     <parameter name="redisConnectionPoolId" description="the connection pool id for create unique pool"/>
 
     <!-- standalone mode specific parameters-->
@@ -106,6 +108,12 @@
             <then/>
             <else>
                 <property name="redisConnectionTimeout" expression="$func:redisConnectionTimeout"/>
+            </else>
+        </filter>
+        <filter xpath="$func:maxWaitTime = '' or  not(string($func:maxWaitTime))">
+            <then/>
+            <else>
+                <property name="maxWaitTime" expression="$func:maxWaitTime"/>
             </else>
         </filter>
         <filter xpath="$func:redisClusterEnabled = '' or  not(string($func:redisClusterEnabled))">
