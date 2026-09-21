@@ -16,7 +16,7 @@
     ],
     "releases": [
         {
-            "tagName": "v3.1.8",
+            "tagName": "v3.1.9",
             "products": [
                 "MI 1.2.0",
                 "MI 4.4.0",
@@ -29,274 +29,8 @@
             ],
             "operations": [
                 {
-                    "name": "mSet",
-                    "description": "Operation mSet in redis",
-                    "params": [
-                        {
-                            "name": "redisKeysValues",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Keys Values"
-                        }
-                    ],
-                    "isHidden": false
-                },
-                {
-                    "name": "lPop",
-                    "description": "Operation lPop in redis",
-                    "params": [
-                        {
-                            "name": "redisKey",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Key"
-                        }
-                    ],
-                    "isHidden": false
-                },
-                {
-                    "name": "set",
-                    "description": "Set fields in redis db",
-                    "params": [
-                        {
-                            "name": "redisKey",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Key"
-                        },
-                        {
-                            "name": "redisValue",
-                            "type": "stringOrExpression",
-                            "required": false,
-                            "defaultValue": "",
-                            "description": "Redis Value"
-                        }
-                    ],
-                    "isHidden": false
-                },
-                {
-                    "name": "lPush",
-                    "description": "Operation lPush in redis",
-                    "params": [
-                        {
-                            "name": "redisKey",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Key"
-                        },
-                        {
-                            "name": "redisStrings",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Strings"
-                        }
-                    ],
-                    "isHidden": false
-                },
-                {
-                    "name": "lPushX",
-                    "description": "Operation lPushX in redis",
-                    "params": [
-                        {
-                            "name": "redisKey",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Key"
-                        },
-                        {
-                            "name": "redisString",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis String"
-                        }
-                    ],
-                    "isHidden": false
-                },
-                {
-                    "name": "sRandMember",
-                    "description": "Operation sRandMember in redis",
-                    "params": [
-                        {
-                            "name": "redisKey",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Key"
-                        }
-                    ],
-                    "isHidden": false
-                },
-                {
-                    "name": "hGet",
-                    "description": "Operation hGet in redis",
-                    "params": [
-                        {
-                            "name": "redisKey",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Key"
-                        },
-                        {
-                            "name": "redisField",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Field"
-                        },
-                        {
-                            "name": "mediaType",
-                            "type": "comboOrExpression",
-                            "required": false,
-                            "defaultValue": "text",
-                            "description": "Media type of the redis data Supported values: text, json, xml"
-                        }
-                    ],
-                    "isHidden": false
-                },
-                {
-                    "name": "lPop",
-                    "description": "Operation lPop in redis",
-                    "params": [
-                        {
-                            "name": "redisKey",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Key"
-                        }
-                    ],
-                    "isHidden": false
-                },
-                {
-                    "name": "zRangeByScore",
-                    "description": "Operation zRangeByScore in redis",
-                    "params": [
-                        {
-                            "name": "redisKey",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Key"
-                        },
-                        {
-                            "name": "redisMin",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Min"
-                        },
-                        {
-                            "name": "redisMax",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Max"
-                        }
-                    ],
-                    "isHidden": false
-                },
-                {
-                    "name": "blPop",
-                    "description": "Operation blPop in redis",
-                    "params": [
-                        {
-                            "name": "redisKey",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Key"
-                        },
-                        {
-                            "name": "redisBlPopTimeout",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis BlPop Timeout"
-                        }
-                    ],
-                    "isHidden": false
-                },
-                {
-                    "name": "zRevRange",
-                    "description": "Operation zRevRange in redis",
-                    "params": [
-                        {
-                            "name": "redisKey",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Key"
-                        },
-                        {
-                            "name": "redisStart",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Start"
-                        },
-                        {
-                            "name": "redisEnd",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis End"
-                        }
-                    ],
-                    "isHidden": false
-                },
-                {
-                    "name": "getObjectIdleTime",
-                    "description": "Operation getObjectIdleTime in redis",
-                    "params": [
-                        {
-                            "name": "redisKey",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Key"
-                        }
-                    ],
-                    "isHidden": false
-                },
-                {
-                    "name": "sUnion",
-                    "description": "Operation sUnion in redis",
-                    "params": [
-                        {
-                            "name": "redisKey",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Key"
-                        }
-                    ],
-                    "isHidden": false
-                },
-                {
-                    "name": "hKeys",
-                    "description": "Operation hKeys in redis",
-                    "params": [
-                        {
-                            "name": "redisKey",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Key"
-                        }
-                    ],
-                    "isHidden": false
-                },
-                {
-                    "name": "rPushX",
-                    "description": "Operation rPushX in redis",
+                    "name": "zRemRangeByRank",
+                    "description": "Operation zRemRangeByRank in redis",
                     "params": [
                         {
                             "name": "redisKey",
@@ -316,8 +50,8 @@
                     "isHidden": false
                 },
                 {
-                    "name": "zadd",
-                    "description": "Operation zadd in redis",
+                    "name": "setnX",
+                    "description": "Operation setnX in redis",
                     "params": [
                         {
                             "name": "redisKey",
@@ -327,11 +61,32 @@
                             "description": "Redis Key"
                         },
                         {
-                            "name": "redisScore",
+                            "name": "redisValue",
                             "type": "stringOrExpression",
                             "required": true,
                             "defaultValue": "",
-                            "description": "Redis Score"
+                            "description": "Redis Value"
+                        }
+                    ],
+                    "isHidden": false
+                },
+                {
+                    "name": "sMove",
+                    "description": "Operation sMove in redis",
+                    "params": [
+                        {
+                            "name": "redisSrckey",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Src Key"
+                        },
+                        {
+                            "name": "redisDstkey",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Dst Key"
                         },
                         {
                             "name": "redisMember",
@@ -339,89 +94,6 @@
                             "required": true,
                             "defaultValue": "",
                             "description": "Redis Member"
-                        }
-                    ],
-                    "isHidden": false
-                },
-                {
-                    "name": "sUnionStore",
-                    "description": "Operation sUnionStore in redis",
-                    "params": [
-                        {
-                            "name": "redisKey",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Key"
-                        },
-                        {
-                            "name": "redisDstkey",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Destination Key"
-                        }
-                    ],
-                    "isHidden": false
-                },
-                {
-                    "name": "getSet",
-                    "description": "Operation getSet in redis",
-                    "params": [
-                        {
-                            "name": "redisKey",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Key"
-                        },
-                        {
-                            "name": "redisValue",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Value"
-                        }
-                    ],
-                    "isHidden": false
-                },
-                {
-                    "name": "randomKey",
-                    "description": "Operation randomKey in redis",
-                    "params": [],
-                    "isHidden": false
-                },
-                {
-                    "name": "get",
-                    "description": "Get fields in redis db",
-                    "params": [
-                        {
-                            "name": "redisKey",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Key"
-                        }
-                    ],
-                    "isHidden": false
-                },
-                {
-                    "name": "zUnionStore",
-                    "description": "Operation zUnionStore in redis",
-                    "params": [
-                        {
-                            "name": "redisKey",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Key"
-                        },
-                        {
-                            "name": "redisSets",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Sets"
                         }
                     ],
                     "isHidden": false
@@ -455,6 +127,76 @@
                     "isHidden": false
                 },
                 {
+                    "name": "del",
+                    "description": "Operation del in redis",
+                    "params": [
+                        {
+                            "name": "redisKey",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Key"
+                        }
+                    ],
+                    "isHidden": false
+                },
+                {
+                    "name": "zScore",
+                    "description": "Operation zScore in redis",
+                    "params": [
+                        {
+                            "name": "redisKey",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Key"
+                        },
+                        {
+                            "name": "redisMember",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Member"
+                        }
+                    ],
+                    "isHidden": false
+                },
+                {
+                    "name": "expireAt",
+                    "description": "Operation expireAt in redis",
+                    "params": [
+                        {
+                            "name": "redisKey",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Key"
+                        },
+                        {
+                            "name": "timestamp",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Timestamp"
+                        }
+                    ],
+                    "isHidden": false
+                },
+                {
+                    "name": "hLen",
+                    "description": "Operation hLen in redis",
+                    "params": [
+                        {
+                            "name": "redisKey",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Key"
+                        }
+                    ],
+                    "isHidden": false
+                },
+                {
                     "name": "getRange",
                     "description": "Operation getRange in redis",
                     "params": [
@@ -483,57 +225,8 @@
                     "isHidden": false
                 },
                 {
-                    "name": "expireAt",
-                    "description": "Operation expireAt in redis",
-                    "params": [
-                        {
-                            "name": "redisKey",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Key"
-                        },
-                        {
-                            "name": "timestamp",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Timestamp"
-                        }
-                    ],
-                    "isHidden": false
-                },
-                {
-                    "name": "hSet",
-                    "description": "Set fields in hash tables stored in redis",
-                    "params": [
-                        {
-                            "name": "redisKey",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Key"
-                        },
-                        {
-                            "name": "redisField",
-                            "type": "stringOrExpression",
-                            "required": false,
-                            "defaultValue": "",
-                            "description": "redis Field"
-                        },
-                        {
-                            "name": "redisValue",
-                            "type": "stringOrExpression",
-                            "required": false,
-                            "defaultValue": "",
-                            "description": "Redis Value"
-                        }
-                    ],
-                    "isHidden": false
-                },
-                {
-                    "name": "hVals",
-                    "description": "Operation hVals in redis",
+                    "name": "lPop",
+                    "description": "Operation lPop in redis",
                     "params": [
                         {
                             "name": "redisKey",
@@ -567,8 +260,14 @@
                     "isHidden": false
                 },
                 {
-                    "name": "sDiffStore",
-                    "description": "Operation sDiffStore in redis",
+                    "name": "flushDB",
+                    "description": "Operation flushDB in redis",
+                    "params": [],
+                    "isHidden": false
+                },
+                {
+                    "name": "sIsMember",
+                    "description": "Operation sIsMember in redis",
                     "params": [
                         {
                             "name": "redisKey",
@@ -578,18 +277,24 @@
                             "description": "Redis Key"
                         },
                         {
-                            "name": "redisDstkey",
+                            "name": "redisMember",
                             "type": "stringOrExpression",
                             "required": true,
                             "defaultValue": "",
-                            "description": "Redis Dst Key"
+                            "description": "Redis Member"
                         }
                     ],
                     "isHidden": false
                 },
                 {
-                    "name": "lTrim",
-                    "description": "Operation lTrim in redis",
+                    "name": "randomKey",
+                    "description": "Operation randomKey in redis",
+                    "params": [],
+                    "isHidden": false
+                },
+                {
+                    "name": "zRemRangeByScore",
+                    "description": "Operation zRemRangeByScore in redis",
                     "params": [
                         {
                             "name": "redisKey",
@@ -616,8 +321,22 @@
                     "isHidden": false
                 },
                 {
-                    "name": "expire",
-                    "description": "Operation expire in redis",
+                    "name": "echo",
+                    "description": "Operation echo in redis",
+                    "params": [
+                        {
+                            "name": "redisMessage",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "The message to be printed"
+                        }
+                    ],
+                    "isHidden": false
+                },
+                {
+                    "name": "zRevRangeByScore",
+                    "description": "Operation zRevRangeByScore in redis",
                     "params": [
                         {
                             "name": "redisKey",
@@ -627,18 +346,25 @@
                             "description": "Redis Key"
                         },
                         {
-                            "name": "seconds",
+                            "name": "redisMin",
                             "type": "stringOrExpression",
                             "required": true,
                             "defaultValue": "",
-                            "description": "Time in seconds"
+                            "description": "Redis Min"
+                        },
+                        {
+                            "name": "redisMax",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Max"
                         }
                     ],
                     "isHidden": false
                 },
                 {
-                    "name": "exists",
-                    "description": "Operation exists in redis",
+                    "name": "sInterStore",
+                    "description": "Operation sInterStore in redis",
                     "params": [
                         {
                             "name": "redisKey",
@@ -646,26 +372,27 @@
                             "required": true,
                             "defaultValue": "",
                             "description": "Redis Key"
-                        }
-                    ],
-                    "isHidden": false
-                },
-                {
-                    "name": "flushDB",
-                    "description": "Operation flushDB in redis",
-                    "params": [],
-                    "isHidden": false
-                },
-                {
-                    "name": "zInterStore",
-                    "description": "Operation zInterStore in redis",
-                    "params": [
+                        },
                         {
                             "name": "redisDstkey",
                             "type": "stringOrExpression",
                             "required": true,
                             "defaultValue": "",
-                            "description": "Redis Destination Key"
+                            "description": "Redis Dst Key"
+                        }
+                    ],
+                    "isHidden": false
+                },
+                {
+                    "name": "zUnionStore",
+                    "description": "Operation zUnionStore in redis",
+                    "params": [
+                        {
+                            "name": "redisKey",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Key"
                         },
                         {
                             "name": "redisSets",
@@ -678,22 +405,14 @@
                     "isHidden": false
                 },
                 {
-                    "name": "lPop",
-                    "description": "Operation lPop in redis",
-                    "params": [
-                        {
-                            "name": "redisKey",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Key"
-                        }
-                    ],
+                    "name": "ping",
+                    "description": "Operation ping in redis",
+                    "params": [],
                     "isHidden": false
                 },
                 {
-                    "name": "lSet",
-                    "description": "Operation lSet in redis",
+                    "name": "zRevRange",
+                    "description": "Operation zRevRange in redis",
                     "params": [
                         {
                             "name": "redisKey",
@@ -703,74 +422,25 @@
                             "description": "Redis Key"
                         },
                         {
-                            "name": "redisIndex",
+                            "name": "redisStart",
                             "type": "stringOrExpression",
                             "required": true,
                             "defaultValue": "",
-                            "description": "Redis Index"
+                            "description": "Redis Start"
                         },
                         {
-                            "name": "redisValue",
+                            "name": "redisEnd",
                             "type": "stringOrExpression",
                             "required": true,
                             "defaultValue": "",
-                            "description": "Redis Value"
+                            "description": "Redis End"
                         }
                     ],
                     "isHidden": false
                 },
                 {
-                    "name": "hMGet",
-                    "description": "Operation hMGet in redis",
-                    "params": [
-                        {
-                            "name": "redisKey",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Key"
-                        },
-                        {
-                            "name": "redisFields",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Fields"
-                        }
-                    ],
-                    "isHidden": false
-                },
-                {
-                    "name": "hLen",
-                    "description": "Operation hLen in redis",
-                    "params": [
-                        {
-                            "name": "redisKey",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Key"
-                        }
-                    ],
-                    "isHidden": false
-                },
-                {
-                    "name": "sInter",
-                    "description": "Operation sInter in redis",
-                    "params": [
-                        {
-                            "name": "redisKey",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Key"
-                        }
-                    ],
-                    "isHidden": false
-                },
-                {
-                    "name": "setBit",
-                    "description": "Operation setBit in redis",
+                    "name": "hExists",
+                    "description": "Operation hExists in redis",
                     "params": [
                         {
                             "name": "redisKey",
@@ -780,11 +450,25 @@
                             "description": "Redis Key"
                         },
                         {
-                            "name": "redisOffset",
+                            "name": "redisField",
                             "type": "stringOrExpression",
                             "required": true,
                             "defaultValue": "",
-                            "description": "Redis Offset"
+                            "description": "Redis Field"
+                        }
+                    ],
+                    "isHidden": false
+                },
+                {
+                    "name": "getSet",
+                    "description": "Operation getSet in redis",
+                    "params": [
+                        {
+                            "name": "redisKey",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Key"
                         },
                         {
                             "name": "redisValue",
@@ -846,8 +530,8 @@
                     "isHidden": false
                 },
                 {
-                    "name": "del",
-                    "description": "Operation del in redis",
+                    "name": "sRem",
+                    "description": "Operation sRem in redis",
                     "params": [
                         {
                             "name": "redisKey",
@@ -855,6 +539,13 @@
                             "required": true,
                             "defaultValue": "",
                             "description": "Redis Key"
+                        },
+                        {
+                            "name": "redisMembers",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Members"
                         }
                     ],
                     "isHidden": false
@@ -888,8 +579,8 @@
                     "isHidden": false
                 },
                 {
-                    "name": "zRevRank",
-                    "description": "Operation zRevRank in redis",
+                    "name": "lSet",
+                    "description": "Operation lSet in redis",
                     "params": [
                         {
                             "name": "redisKey",
@@ -899,11 +590,95 @@
                             "description": "Redis Key"
                         },
                         {
-                            "name": "redisMember",
+                            "name": "redisIndex",
                             "type": "stringOrExpression",
                             "required": true,
                             "defaultValue": "",
-                            "description": "Redis Member"
+                            "description": "Redis Index"
+                        },
+                        {
+                            "name": "redisValue",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Value"
+                        }
+                    ],
+                    "isHidden": false
+                },
+                {
+                    "name": "zCount",
+                    "description": "Operation zCount in redis",
+                    "params": [
+                        {
+                            "name": "redisKey",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Key"
+                        },
+                        {
+                            "name": "redisMin",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Min"
+                        },
+                        {
+                            "name": "redisMax",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Max"
+                        }
+                    ],
+                    "isHidden": false
+                },
+                {
+                    "name": "hSet",
+                    "description": "Set fields in hash tables stored in redis",
+                    "params": [
+                        {
+                            "name": "redisKey",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Key"
+                        },
+                        {
+                            "name": "redisField",
+                            "type": "stringOrExpression",
+                            "required": false,
+                            "defaultValue": "",
+                            "description": "redis Field"
+                        },
+                        {
+                            "name": "redisValue",
+                            "type": "stringOrExpression",
+                            "required": false,
+                            "defaultValue": "",
+                            "description": "Redis Value"
+                        }
+                    ],
+                    "isHidden": false
+                },
+                {
+                    "name": "rPushX",
+                    "description": "Operation rPushX in redis",
+                    "params": [
+                        {
+                            "name": "redisKey",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Key"
+                        },
+                        {
+                            "name": "redisValue",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Value"
                         }
                     ],
                     "isHidden": false
@@ -930,8 +705,106 @@
                     "isHidden": false
                 },
                 {
-                    "name": "hGetAll",
-                    "description": "Operation hGetAll in redis",
+                    "name": "rPopLPush",
+                    "description": "Operation rPopLPush in redis",
+                    "params": [
+                        {
+                            "name": "redisSrckey",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Src Key"
+                        },
+                        {
+                            "name": "redisDstkey",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Dst Key"
+                        }
+                    ],
+                    "isHidden": false
+                },
+                {
+                    "name": "lRem",
+                    "description": "Operation lRem in redis",
+                    "params": [
+                        {
+                            "name": "redisKey",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Key"
+                        },
+                        {
+                            "name": "redisCount",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Count"
+                        },
+                        {
+                            "name": "redisValue",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Value"
+                        }
+                    ],
+                    "isHidden": false
+                },
+                {
+                    "name": "zRangeByScore",
+                    "description": "Operation zRangeByScore in redis",
+                    "params": [
+                        {
+                            "name": "redisKey",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Key"
+                        },
+                        {
+                            "name": "redisMin",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Min"
+                        },
+                        {
+                            "name": "redisMax",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Max"
+                        }
+                    ],
+                    "isHidden": false
+                },
+                {
+                    "name": "incrBy",
+                    "description": "Operation incrBy in redis",
+                    "params": [
+                        {
+                            "name": "redisKey",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Key"
+                        },
+                        {
+                            "name": "redisInteger",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Integer"
+                        }
+                    ],
+                    "isHidden": false
+                },
+                {
+                    "name": "sPop",
+                    "description": "Operation sPop in redis",
                     "params": [
                         {
                             "name": "redisKey",
@@ -944,8 +817,8 @@
                     "isHidden": false
                 },
                 {
-                    "name": "zRemRangeByRank",
-                    "description": "Operation zRemRangeByRank in redis",
+                    "name": "sUnionStore",
+                    "description": "Operation sUnionStore in redis",
                     "params": [
                         {
                             "name": "redisKey",
@@ -955,11 +828,11 @@
                             "description": "Redis Key"
                         },
                         {
-                            "name": "redisValue",
+                            "name": "redisDstkey",
                             "type": "stringOrExpression",
                             "required": true,
                             "defaultValue": "",
-                            "description": "Redis Value"
+                            "description": "Redis Destination Key"
                         }
                     ],
                     "isHidden": false
@@ -1000,6 +873,223 @@
                     "isHidden": false
                 },
                 {
+                    "name": "get",
+                    "description": "Get fields in redis db",
+                    "params": [
+                        {
+                            "name": "redisKey",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Key"
+                        }
+                    ],
+                    "isHidden": false
+                },
+                {
+                    "name": "zadd",
+                    "description": "Operation zadd in redis",
+                    "params": [
+                        {
+                            "name": "redisKey",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Key"
+                        },
+                        {
+                            "name": "redisScore",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Score"
+                        },
+                        {
+                            "name": "redisMember",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Member"
+                        }
+                    ],
+                    "isHidden": false
+                },
+                {
+                    "name": "lPop",
+                    "description": "Operation lPop in redis",
+                    "params": [
+                        {
+                            "name": "redisKey",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Key"
+                        }
+                    ],
+                    "isHidden": false
+                },
+                {
+                    "name": "hSetNX",
+                    "description": "Operation hSetNX in redis",
+                    "params": [
+                        {
+                            "name": "redisKey",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Key"
+                        },
+                        {
+                            "name": "redisField",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Field"
+                        },
+                        {
+                            "name": "redisValue",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Value"
+                        }
+                    ],
+                    "isHidden": false
+                },
+                {
+                    "name": "mSet",
+                    "description": "Operation mSet in redis",
+                    "params": [
+                        {
+                            "name": "redisKeysValues",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Keys Values"
+                        }
+                    ],
+                    "isHidden": false
+                },
+                {
+                    "name": "hKeys",
+                    "description": "Operation hKeys in redis",
+                    "params": [
+                        {
+                            "name": "redisKey",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Key"
+                        }
+                    ],
+                    "isHidden": false
+                },
+                {
+                    "name": "lPop",
+                    "description": "Operation lPop in redis",
+                    "params": [
+                        {
+                            "name": "redisKey",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Key"
+                        }
+                    ],
+                    "isHidden": false
+                },
+                {
+                    "name": "type",
+                    "description": "Operation type in redis",
+                    "params": [
+                        {
+                            "name": "redisKey",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Key"
+                        }
+                    ],
+                    "isHidden": false
+                },
+                {
+                    "name": "append",
+                    "description": "Operation append in redis",
+                    "params": [
+                        {
+                            "name": "redisKey",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Key"
+                        },
+                        {
+                            "name": "redisValue",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Value"
+                        }
+                    ],
+                    "isHidden": false
+                },
+                {
+                    "name": "hGet",
+                    "description": "Operation hGet in redis",
+                    "params": [
+                        {
+                            "name": "redisKey",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Key"
+                        },
+                        {
+                            "name": "redisField",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Field"
+                        },
+                        {
+                            "name": "mediaType",
+                            "type": "comboOrExpression",
+                            "required": false,
+                            "defaultValue": "text",
+                            "description": "Media type of the redis data Supported values: text, json, xml"
+                        }
+                    ],
+                    "isHidden": false
+                },
+                {
+                    "name": "lTrim",
+                    "description": "Operation lTrim in redis",
+                    "params": [
+                        {
+                            "name": "redisKey",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Key"
+                        },
+                        {
+                            "name": "redisStart",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Start"
+                        },
+                        {
+                            "name": "redisEnd",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis End"
+                        }
+                    ],
+                    "isHidden": false
+                },
+                {
                     "name": "zRem",
                     "description": "Operation zRem in redis",
                     "params": [
@@ -1021,9 +1111,45 @@
                     "isHidden": false
                 },
                 {
-                    "name": "ping",
-                    "description": "Operation ping in redis",
-                    "params": [],
+                    "name": "hMGet",
+                    "description": "Operation hMGet in redis",
+                    "params": [
+                        {
+                            "name": "redisKey",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Key"
+                        },
+                        {
+                            "name": "redisFields",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Fields"
+                        }
+                    ],
+                    "isHidden": false
+                },
+                {
+                    "name": "sDiffStore",
+                    "description": "Operation sDiffStore in redis",
+                    "params": [
+                        {
+                            "name": "redisKey",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Key"
+                        },
+                        {
+                            "name": "redisDstkey",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Dst Key"
+                        }
+                    ],
                     "isHidden": false
                 },
                 {
@@ -1069,8 +1195,29 @@
                     "isHidden": false
                 },
                 {
-                    "name": "hMSet",
-                    "description": "Operation hMSet in redis",
+                    "name": "zInterStore",
+                    "description": "Operation zInterStore in redis",
+                    "params": [
+                        {
+                            "name": "redisDstkey",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Destination Key"
+                        },
+                        {
+                            "name": "redisSets",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Sets"
+                        }
+                    ],
+                    "isHidden": false
+                },
+                {
+                    "name": "expire",
+                    "description": "Operation expire in redis",
                     "params": [
                         {
                             "name": "redisKey",
@@ -1080,32 +1227,18 @@
                             "description": "Redis Key"
                         },
                         {
-                            "name": "redisFieldValues",
+                            "name": "seconds",
                             "type": "stringOrExpression",
                             "required": true,
                             "defaultValue": "",
-                            "description": "Redis Field Values"
+                            "description": "Time in seconds"
                         }
                     ],
                     "isHidden": false
                 },
                 {
-                    "name": "mSetnX",
-                    "description": "Operation mSetnX in redis",
-                    "params": [
-                        {
-                            "name": "redisKeysValues",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Keys Values"
-                        }
-                    ],
-                    "isHidden": false
-                },
-                {
-                    "name": "append",
-                    "description": "Operation append in redis",
+                    "name": "set",
+                    "description": "Set fields in redis db",
                     "params": [
                         {
                             "name": "redisKey",
@@ -1117,7 +1250,7 @@
                         {
                             "name": "redisValue",
                             "type": "stringOrExpression",
-                            "required": true,
+                            "required": false,
                             "defaultValue": "",
                             "description": "Redis Value"
                         }
@@ -1125,8 +1258,161 @@
                     "isHidden": false
                 },
                 {
-                    "name": "sPop",
-                    "description": "Operation sPop in redis",
+                    "name": "sUnion",
+                    "description": "Operation sUnion in redis",
+                    "params": [
+                        {
+                            "name": "redisKey",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Key"
+                        }
+                    ],
+                    "isHidden": false
+                },
+                {
+                    "name": "zRank",
+                    "description": "Operation zRank in redis",
+                    "params": [
+                        {
+                            "name": "redisKey",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Key"
+                        },
+                        {
+                            "name": "redisMember",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Member"
+                        }
+                    ],
+                    "isHidden": false
+                },
+                {
+                    "name": "hGetAll",
+                    "description": "Operation hGetAll in redis",
+                    "params": [
+                        {
+                            "name": "redisKey",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Key"
+                        }
+                    ],
+                    "isHidden": false
+                },
+                {
+                    "name": "exists",
+                    "description": "Operation exists in redis",
+                    "params": [
+                        {
+                            "name": "redisKey",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Key"
+                        }
+                    ],
+                    "isHidden": false
+                },
+                {
+                    "name": "sInter",
+                    "description": "Operation sInter in redis",
+                    "params": [
+                        {
+                            "name": "redisKey",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Key"
+                        }
+                    ],
+                    "isHidden": false
+                },
+                {
+                    "name": "sRandMember",
+                    "description": "Operation sRandMember in redis",
+                    "params": [
+                        {
+                            "name": "redisKey",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Key"
+                        }
+                    ],
+                    "isHidden": false
+                },
+                {
+                    "name": "keys",
+                    "description": "Operation keys in redis",
+                    "params": [
+                        {
+                            "name": "redisPattern",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Pattern"
+                        }
+                    ],
+                    "isHidden": false
+                },
+                {
+                    "name": "lPush",
+                    "description": "Operation lPush in redis",
+                    "params": [
+                        {
+                            "name": "redisKey",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Key"
+                        },
+                        {
+                            "name": "redisStrings",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Strings"
+                        }
+                    ],
+                    "isHidden": false
+                },
+                {
+                    "name": "quit",
+                    "description": "Operation quit in redis",
+                    "params": [],
+                    "isHidden": false
+                },
+                {
+                    "name": "hDel",
+                    "description": "Operation hDel in redis",
+                    "params": [
+                        {
+                            "name": "redisKey",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Key"
+                        },
+                        {
+                            "name": "redisFields",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "The values of the fields to be deleted"
+                        }
+                    ],
+                    "isHidden": false
+                },
+                {
+                    "name": "strLen",
+                    "description": "Operation strLen in redis",
                     "params": [
                         {
                             "name": "redisKey",
@@ -1167,8 +1453,8 @@
                     "isHidden": false
                 },
                 {
-                    "name": "lPop",
-                    "description": "Operation lPop in redis",
+                    "name": "ttl",
+                    "description": "Operation ttl in redis",
                     "params": [
                         {
                             "name": "redisKey",
@@ -1181,8 +1467,8 @@
                     "isHidden": false
                 },
                 {
-                    "name": "lRem",
-                    "description": "Operation lRem in redis",
+                    "name": "zRevRank",
+                    "description": "Operation zRevRank in redis",
                     "params": [
                         {
                             "name": "redisKey",
@@ -1192,11 +1478,53 @@
                             "description": "Redis Key"
                         },
                         {
-                            "name": "redisCount",
+                            "name": "redisMember",
                             "type": "stringOrExpression",
                             "required": true,
                             "defaultValue": "",
-                            "description": "Redis Count"
+                            "description": "Redis Member"
+                        }
+                    ],
+                    "isHidden": false
+                },
+                {
+                    "name": "hMSet",
+                    "description": "Operation hMSet in redis",
+                    "params": [
+                        {
+                            "name": "redisKey",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Key"
+                        },
+                        {
+                            "name": "redisFieldValues",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Field Values"
+                        }
+                    ],
+                    "isHidden": false
+                },
+                {
+                    "name": "setBit",
+                    "description": "Operation setBit in redis",
+                    "params": [
+                        {
+                            "name": "redisKey",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Key"
+                        },
+                        {
+                            "name": "redisOffset",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Offset"
                         },
                         {
                             "name": "redisValue",
@@ -1209,36 +1537,8 @@
                     "isHidden": false
                 },
                 {
-                    "name": "sMove",
-                    "description": "Operation sMove in redis",
-                    "params": [
-                        {
-                            "name": "redisSrckey",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Src Key"
-                        },
-                        {
-                            "name": "redisDstkey",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Dst Key"
-                        },
-                        {
-                            "name": "redisMember",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Member"
-                        }
-                    ],
-                    "isHidden": false
-                },
-                {
-                    "name": "zRevRangeByScore",
-                    "description": "Operation zRevRangeByScore in redis",
+                    "name": "getObjectIdleTime",
+                    "description": "Operation getObjectIdleTime in redis",
                     "params": [
                         {
                             "name": "redisKey",
@@ -1246,333 +1546,6 @@
                             "required": true,
                             "defaultValue": "",
                             "description": "Redis Key"
-                        },
-                        {
-                            "name": "redisMin",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Min"
-                        },
-                        {
-                            "name": "redisMax",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Max"
-                        }
-                    ],
-                    "isHidden": false
-                },
-                {
-                    "name": "zScore",
-                    "description": "Operation zScore in redis",
-                    "params": [
-                        {
-                            "name": "redisKey",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Key"
-                        },
-                        {
-                            "name": "redisMember",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Member"
-                        }
-                    ],
-                    "isHidden": false
-                },
-                {
-                    "name": "setnX",
-                    "description": "Operation setnX in redis",
-                    "params": [
-                        {
-                            "name": "redisKey",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Key"
-                        },
-                        {
-                            "name": "redisValue",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Value"
-                        }
-                    ],
-                    "isHidden": false
-                },
-                {
-                    "name": "echo",
-                    "description": "Operation echo in redis",
-                    "params": [
-                        {
-                            "name": "redisMessage",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "The message to be printed"
-                        }
-                    ],
-                    "isHidden": false
-                },
-                {
-                    "name": "flushAll",
-                    "description": "Operation flushAll in redis",
-                    "params": [],
-                    "isHidden": false
-                },
-                {
-                    "name": "sIsMember",
-                    "description": "Operation sIsMember in redis",
-                    "params": [
-                        {
-                            "name": "redisKey",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Key"
-                        },
-                        {
-                            "name": "redisMember",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Member"
-                        }
-                    ],
-                    "isHidden": false
-                },
-                {
-                    "name": "type",
-                    "description": "Operation type in redis",
-                    "params": [
-                        {
-                            "name": "redisKey",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Key"
-                        }
-                    ],
-                    "isHidden": false
-                },
-                {
-                    "name": "hSetNX",
-                    "description": "Operation hSetNX in redis",
-                    "params": [
-                        {
-                            "name": "redisKey",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Key"
-                        },
-                        {
-                            "name": "redisField",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Field"
-                        },
-                        {
-                            "name": "redisValue",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Value"
-                        }
-                    ],
-                    "isHidden": false
-                },
-                {
-                    "name": "quit",
-                    "description": "Operation quit in redis",
-                    "params": [],
-                    "isHidden": false
-                },
-                {
-                    "name": "zCount",
-                    "description": "Operation zCount in redis",
-                    "params": [
-                        {
-                            "name": "redisKey",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Key"
-                        },
-                        {
-                            "name": "redisMin",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Min"
-                        },
-                        {
-                            "name": "redisMax",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Max"
-                        }
-                    ],
-                    "isHidden": false
-                },
-                {
-                    "name": "strLen",
-                    "description": "Operation strLen in redis",
-                    "params": [
-                        {
-                            "name": "redisKey",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Key"
-                        }
-                    ],
-                    "isHidden": false
-                },
-                {
-                    "name": "hExists",
-                    "description": "Operation hExists in redis",
-                    "params": [
-                        {
-                            "name": "redisKey",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Key"
-                        },
-                        {
-                            "name": "redisField",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Field"
-                        }
-                    ],
-                    "isHidden": false
-                },
-                {
-                    "name": "sInterStore",
-                    "description": "Operation sInterStore in redis",
-                    "params": [
-                        {
-                            "name": "redisKey",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Key"
-                        },
-                        {
-                            "name": "redisDstkey",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Dst Key"
-                        }
-                    ],
-                    "isHidden": false
-                },
-                {
-                    "name": "zRank",
-                    "description": "Operation zRank in redis",
-                    "params": [
-                        {
-                            "name": "redisKey",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Key"
-                        },
-                        {
-                            "name": "redisMember",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Member"
-                        }
-                    ],
-                    "isHidden": false
-                },
-                {
-                    "name": "incrBy",
-                    "description": "Operation incrBy in redis",
-                    "params": [
-                        {
-                            "name": "redisKey",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Key"
-                        },
-                        {
-                            "name": "redisInteger",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Integer"
-                        }
-                    ],
-                    "isHidden": false
-                },
-                {
-                    "name": "rPopLPush",
-                    "description": "Operation rPopLPush in redis",
-                    "params": [
-                        {
-                            "name": "redisSrckey",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Src Key"
-                        },
-                        {
-                            "name": "redisDstkey",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Dst Key"
-                        }
-                    ],
-                    "isHidden": false
-                },
-                {
-                    "name": "sRem",
-                    "description": "Operation sRem in redis",
-                    "params": [
-                        {
-                            "name": "redisKey",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Key"
-                        },
-                        {
-                            "name": "redisMembers",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Members"
-                        }
-                    ],
-                    "isHidden": false
-                },
-                {
-                    "name": "keys",
-                    "description": "Operation keys in redis",
-                    "params": [
-                        {
-                            "name": "redisPattern",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis Pattern"
                         }
                     ],
                     "isHidden": false
@@ -1599,8 +1572,8 @@
                     "isHidden": false
                 },
                 {
-                    "name": "ttl",
-                    "description": "Operation ttl in redis",
+                    "name": "hVals",
+                    "description": "Operation hVals in redis",
                     "params": [
                         {
                             "name": "redisKey",
@@ -1613,8 +1586,8 @@
                     "isHidden": false
                 },
                 {
-                    "name": "zRemRangeByScore",
-                    "description": "Operation zRemRangeByScore in redis",
+                    "name": "blPop",
+                    "description": "Operation blPop in redis",
                     "params": [
                         {
                             "name": "redisKey",
@@ -1624,25 +1597,24 @@
                             "description": "Redis Key"
                         },
                         {
-                            "name": "redisStart",
+                            "name": "redisBlPopTimeout",
                             "type": "stringOrExpression",
                             "required": true,
                             "defaultValue": "",
-                            "description": "Redis Start"
-                        },
-                        {
-                            "name": "redisEnd",
-                            "type": "stringOrExpression",
-                            "required": true,
-                            "defaultValue": "",
-                            "description": "Redis End"
+                            "description": "Redis BlPop Timeout"
                         }
                     ],
                     "isHidden": false
                 },
                 {
-                    "name": "hDel",
-                    "description": "Operation hDel in redis",
+                    "name": "flushAll",
+                    "description": "Operation flushAll in redis",
+                    "params": [],
+                    "isHidden": false
+                },
+                {
+                    "name": "lPushX",
+                    "description": "Operation lPushX in redis",
                     "params": [
                         {
                             "name": "redisKey",
@@ -1652,11 +1624,39 @@
                             "description": "Redis Key"
                         },
                         {
-                            "name": "redisFields",
+                            "name": "redisString",
                             "type": "stringOrExpression",
                             "required": true,
                             "defaultValue": "",
-                            "description": "The values of the fields to be deleted"
+                            "description": "Redis String"
+                        }
+                    ],
+                    "isHidden": false
+                },
+                {
+                    "name": "lPop",
+                    "description": "Operation lPop in redis",
+                    "params": [
+                        {
+                            "name": "redisKey",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Key"
+                        }
+                    ],
+                    "isHidden": false
+                },
+                {
+                    "name": "mSetnX",
+                    "description": "Operation mSetnX in redis",
+                    "params": [
+                        {
+                            "name": "redisKeysValues",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Redis Keys Values"
                         }
                     ],
                     "isHidden": false
@@ -1722,13 +1722,6 @@
                             "required": false,
                             "defaultValue": "",
                             "description": "The minimum amount of time an object must sit idle in the pool before it is eligible for eviction by the idle object evictor "
-                        },
-                        {
-                            "name": "exhaustedAction",
-                            "type": "string",
-                            "required": false,
-                            "defaultValue": "",
-                            "description": "Determines the action to take when the borrowObject() method is called, but the pool is exhausted"
                         }
                     ]
                 }
